@@ -69,8 +69,6 @@ esac
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
-    alias dir='dir --color=auto'
-    alias vdir='vdir --color=auto'
 
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
@@ -90,6 +88,7 @@ alias fnsvn='grep -rn --exclude=*.svn-* '
 alias mphpscope='find . -type f -name "*.php" > cscope.files &&  cscope -bq'
 alias m='mysql -uroot -p --default-character-set=utf8'
 alias m7='mysql -h 192.168.1.7 -uroot -p --default-character-set=utf8'
+alias JPDD='ssh -i ~/.ssh/JPDD.pem ec2-user@ec2-46-51-237-213.ap-northeast-1.compute.amazonaws.com'
 
 
 # Alias definitions.
