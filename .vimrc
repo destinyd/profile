@@ -16,10 +16,12 @@ let g:snips_author = "Killua.DD"
  " My Bundles here:
  "
  " original repos on github
- Bundle 'tpope/vim-fugitive' "Gcommit...  git
+ " Gcommit...  git
+ Bundle 'tpope/vim-fugitive'
  Bundle 'Lokaltog/vim-easymotion'
  Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
- Bundle 'bufexplorer.zip' "be bs bv buffer理打开过去文件
+" be bs bv buffer理打开过去文件
+ Bundle 'bufexplorer.zip' 
  " vim-scripts repos
  Bundle 'L9'
  Bundle 'FuzzyFinder'
@@ -35,7 +37,8 @@ Bundle "taq/vim-rspec"
  Bundle 'AutoComplPop'
 " Bundle 'NeoComplCache'
  Bundle 'fakeclip'
- Bundle 'tpope/vim-surround' "cs cst ds 两旁添加符号
+"cs cst ds 两旁添加符号
+ Bundle 'tpope/vim-surround' 
  " DirBrowser
  Bundle 'scrooloose/nerdtree'
  Bundle 'FindInNERDTree'
@@ -49,16 +52,23 @@ Bundle "taq/vim-rspec"
  Bundle 'auto_mkdir'
  Bundle 'Align'
  Bundle 'serverhorror/javascript.vim'
- Bundle 'matchit.zip' " % 可以跳html标签
+" % 可以跳html标签
+ Bundle 'matchit.zip' 
  Bundle 'AuthorInfo'
  Bundle 'scrooloose/nerdcommenter'
- Bundle 'rson/vim-conque' "命令行
+"命令行
+ Bundle 'rson/vim-conque' 
  Bundle 'wincent/Command-T'
- Bundle 'ervandew/supertab' "tab 完成
- Bundle 'vim-scripts/ZoomWin' " c-w o 全屏
- Bundle 'tpope/vim-endwise' " 结束def end填充
- Bundle "scrooloose/syntastic" " 检查错误
-Bundle "ecomba/vim-ruby-refactoring" " 重构工具
+"tab 完成
+ Bundle 'ervandew/supertab' 
+" c-w o 全屏
+ Bundle 'vim-scripts/ZoomWin' 
+" 结束def end填充
+ Bundle 'tpope/vim-endwise' 
+" 检查错误
+ Bundle "scrooloose/syntastic" 
+" 重构工具
+Bundle "ecomba/vim-ruby-refactoring" 
 Bundle "danchoi/ri_vim"
 
  Bundle "kchmck/vim-coffee-script"
