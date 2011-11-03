@@ -213,7 +213,7 @@ map <leader>b :FufBuffer<CR>
 map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
 
 " switch buffers with Tab
-map <C-Tab> :bn<CR>
+" map <C-Tab> :bn<CR>
 map <S-Tab> :bp<CR>
 
 map <F1> :FufFile<CR>
@@ -253,4 +253,6 @@ imap <C-SPACE> <C-p>
 imap <C-A-SPACE> <C-x><C-]>
 map <C-s> :w<CR>
 map <C-A-s> :wall<CR>
-
+" 我
+map <C-Tab> :tabnext<CR>
+map <C-t> :tabnew<CR>

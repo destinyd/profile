@@ -87,7 +87,7 @@ alias fphp='grep -rn --include=*.php '
 alias fnsvn='grep -rn --exclude=*.svn-* '
 alias mphpscope='find . -type f -name "*.php" > cscope.files &&  cscope -bq'
 alias m='mysql -uroot -p --default-character-set=utf8'
-alias m7='mysql -h 192.168.1.7 -uroot -p --default-character-set=utf8'
+alias m7='mysql -h 192.168.1.7 -uroot -pbusytrade88 --default-character-set=utf8'
 alias JPDD='ssh -i ~/.ssh/JPDD.pem ec2-user@ec2-46-51-237-213.ap-northeast-1.compute.amazonaws.com'
 
 
@@ -116,3 +116,4 @@ if [ -d ~/bin ] ; then
   PATH=~/bin:"${PATH}"
 fi
 export PATH
+export GREP_OPTIONS="--exclude-dir=\.svn"
