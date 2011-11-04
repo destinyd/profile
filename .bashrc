@@ -89,6 +89,7 @@ alias mphpscope='find . -type f -name "*.php" > cscope.files &&  cscope -bq'
 alias m='mysql -uroot -p --default-character-set=utf8'
 alias m7='mysql -h 192.168.1.7 -uroot -pbusytrade88 --default-character-set=utf8'
 alias JPDD='ssh -i ~/.ssh/JPDD.pem ec2-user@ec2-46-51-237-213.ap-northeast-1.compute.amazonaws.com'
+alias hosts='sv /etc/hosts'
 
 
 # Alias definitions.

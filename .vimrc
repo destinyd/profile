@@ -60,7 +60,7 @@ Bundle "taq/vim-rspec"
  Bundle 'rson/vim-conque' 
  Bundle 'wincent/Command-T'
 "tab 完成
- Bundle 'ervandew/supertab' 
+" Bundle 'ervandew/supertab' 
 " c-w o 全屏
  Bundle 'vim-scripts/ZoomWin' 
 " 结束def end填充
