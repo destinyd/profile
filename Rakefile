@@ -26,3 +26,12 @@ task :back_up do
   rescue
   end 
 end
+
+task :snippets do
+  begin
+  FileUtils.mv "#{HOMEPATH}/.vim/bundle/snipMate/snippets","#{HOMEPATH}/.vim/bundle/snipMate/snippets.#{NOW}.bak"
+  rescue
+  end 
+  FileUtils.ln_s NOWPATH + '/snippets', HOMEPATH + '/.vim/bundle/snipMate/snippets'
+  puts "success"
+end

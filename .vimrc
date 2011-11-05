@@ -29,8 +29,8 @@ let g:snips_author = "Killua.DD"
  Bundle "tpope/vim-rails"
 Bundle "taq/vim-rspec"
  " non github repos
- Bundle 'git://git.wincent.com/command-t.git'
- " php
+" Bundle 'git://git.wincent.com/command-t.git'
+ " snipMate 
  Bundle 'vim-scripts/snipMate'
  " ...
  " other need
@@ -256,3 +256,4 @@ map <C-A-s> :wall<CR>
 " 我
 map <C-Tab> :tabnext<CR>
 map <C-t> :tabnew<CR>
+map <Leader>ct :CommandT <CR>
