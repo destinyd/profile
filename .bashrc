@@ -90,6 +90,9 @@ alias m='mysql -uroot -p --default-character-set=utf8'
 alias m7='mysql -h 192.168.1.7 -uroot -pbusytrade88 --default-character-set=utf8'
 alias JPDD='ssh -i ~/.ssh/JPDD.pem ec2-user@ec2-46-51-237-213.ap-northeast-1.compute.amazonaws.com'
 alias hosts='sv /etc/hosts'
+alias mig="bundle exec rake db:migrate"
+alias ar='sudo service apache2 restart'
+alias nr='sudo service nginx restart'
 
 
 # Alias definitions.
@@ -109,9 +112,6 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 export XMODIFIERS="@im=fcitx"
-
-alias ar='sudo service apache2 restart'
-alias nr='sudo service nginx restart'
 
 if [ -d ~/bin ] ; then
   PATH=~/bin:"${PATH}"
