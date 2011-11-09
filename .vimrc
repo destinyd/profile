@@ -44,7 +44,7 @@ Bundle "taq/vim-rspec"
  Bundle 'FindInNERDTree'
  Bundle 'The-NERD-Commenter'
  Bundle 'taglist.vim'
- Bundle 'nelson/cscope_maps'
+" Bundle 'nelson/cscope_maps'
  Bundle 'vcscommand.vim'
  Bundle 'vim-scripts/qiushibaike'
  Bundle 'jsbeautify'

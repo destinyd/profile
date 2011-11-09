@@ -93,6 +93,9 @@ alias hosts='sv /etc/hosts'
 alias mig="bundle exec rake db:migrate"
 alias ar='sudo service apache2 restart'
 alias nr='sudo service nginx restart'
+alias update='sudo apt-get update'
+alias upgrade='sudo apt-get upgrade'
+alias ai='sudo apt-get install'
 
 
 # Alias definitions.
