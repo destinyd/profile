@@ -254,6 +254,5 @@ imap <C-A-SPACE> <C-x><C-]>
 map <C-s> :w<CR>
 map <C-A-s> :wall<CR>
 " 我
-map <C-Tab> :tabnext<CR>
-map <C-t> :tabnew<CR>
+map <Leader>tn :tabnew<CR>
 map <Leader>ct :CommandT <CR>

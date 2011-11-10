@@ -1,0 +1,5 @@
+[user]
+	name = destinyd
+	email = destinyd_war@163.com
+[alias]
+        tree = log --graph --decorate --pretty=oneline --abbrev-commit
