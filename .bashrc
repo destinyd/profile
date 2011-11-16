@@ -121,3 +121,4 @@ if [ -d ~/bin ] ; then
 fi
 export PATH
 export GREP_OPTIONS="--exclude-dir=\.svn"
+export SVN_EDITOR=vim
