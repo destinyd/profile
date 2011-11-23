@@ -42,10 +42,11 @@ Bundle "taq/vim-rspec"
  " DirBrowser
  Bundle 'scrooloose/nerdtree'
  Bundle 'FindInNERDTree'
- Bundle 'The-NERD-Commenter'
+" Bundle 'The-NERD-Commenter'
  Bundle 'taglist.vim'
 " Bundle 'nelson/cscope_maps'
- Bundle 'vcscommand.vim'
+" svn git等 通用命令
+" Bundle 'vcscommand.vim'
  Bundle 'vim-scripts/qiushibaike'
  Bundle 'jsbeautify'
  Bundle 'xml.vim'
@@ -55,13 +56,15 @@ Bundle "taq/vim-rspec"
 " % 可以跳html标签
  Bundle 'matchit.zip' 
  Bundle 'AuthorInfo'
+" ,cc ,cu ,c<space>
  Bundle 'scrooloose/nerdcommenter'
-"命令行
+"命令行 ConqueTeam
  Bundle 'rson/vim-conque' 
+" 自己设的,ct 
  Bundle 'wincent/Command-T'
 "tab 完成
 " Bundle 'ervandew/supertab' 
-" c-w o 全屏
+" c-w o 全屏  自己,,
  Bundle 'vim-scripts/ZoomWin' 
 " 结束def end填充
  Bundle 'tpope/vim-endwise' 
@@ -209,10 +212,10 @@ highlight StatusLine term=bold,reverse cterm=bold,reverse
 " KEYMAPS
 """""""""""""""""""""""""""""""""""""""""""
 let mapleader=","
-map <leader>F :FufFile<CR>
-map <leader>f :FufTaggedFile<CR>
-map <leader>g :FufTag<CR>
-map <leader>b :FufBuffer<CR>
+map <leader>fF :FufFile<CR>
+map <leader>fe :FufTaggedFile<CR>
+map <leader>fg :FufTag<CR>
+map <leader>fb :FufBuffer<CR>
 
 map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
 
@@ -232,17 +235,9 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
  
-silent! nmap <silent> <Leader>p :NERDTreeToggle<CR>
-nnoremap <silent> <C-f> :call FindInNERDTree()<CR>
-
 map <Leader><Leader> :ZoomWin<CR>
 map <C-\> :tnext<CR>
-" Opens an edit command with the path of the currently edited file filled in
-" Normal mode: <Leader>e
-map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 
-" Opens a tab edit command with the path of the currently edited file filled in
-" Normal mode: <Leader>t
 map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 " Unimpaired configuration
 " Bubble single lines
