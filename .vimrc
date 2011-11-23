@@ -36,7 +36,8 @@ Bundle "taq/vim-rspec"
  " other need
  Bundle 'AutoComplPop'
 " Bundle 'NeoComplCache'
- Bundle 'fakeclip'
+" 剪贴板
+" Bundle 'fakeclip'
 "cs cst ds 两旁添加符号
  Bundle 'tpope/vim-surround' 
  " DirBrowser
@@ -251,7 +252,13 @@ map <A-N> :FufBuffer<CR>
 imap <C-SPACE> <C-p>
 imap <C-A-SPACE> <C-x><C-]>
 map <C-s> :w<CR>
+imap <C-s> :w<CR>
+nmap <C-s> :w<CR>
 map <C-A-s> :wall<CR>
 " 我
 map <Leader>tn :tabnew<CR>
 map <Leader>ct :CommandT <CR>
+
+"外部粘贴
+vmap <C-c> y:call system("xclip -i -selection clipboard", getreg("\""))<CR>:call system("xclip -i", getreg("\""))<CR>
+nmap <C-v> :call setreg("\"",system("xclip -o -selection clipboard"))<CR>p
