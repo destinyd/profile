@@ -241,15 +241,13 @@ snippet pdd
 snippet vd
 	var_dump(${1});
 
-snippet http_redirect
+snippet hr
 	header ("HTTP/1.1 301 Moved Permanently"); 
 	header ("Location: ".URL); 
 	exit();
 # display errors
-snippet dise
+snippet de
 	ini_set('display_errors','on');
 # print_r($...)
 snippet pr
 	print_r($${1:arrayName});
-snippet pre
-	echo '<pre>';print_r($${1:arrayName});echo '</pre>';
