@@ -96,6 +96,7 @@ alias nr='sudo service nginx restart'
 alias update='sudo apt-get update'
 alias upgrade='sudo apt-get upgrade'
 alias ai='sudo apt-get install'
+alias dfree='du -sk'
 
 
 # Alias definitions.
