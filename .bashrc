@@ -97,6 +97,7 @@ alias update='sudo apt-get update'
 alias upgrade='sudo apt-get upgrade'
 alias ai='sudo apt-get install'
 alias dfree='du -sk'
+alias shut='sudo shutdown -P 0'
 
 
 # Alias definitions.
