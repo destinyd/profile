@@ -76,6 +76,8 @@ Bundle "ecomba/vim-ruby-refactoring"
 Bundle "danchoi/ri_vim"
 
  Bundle "kchmck/vim-coffee-script"
+"grep in vim 比较老"
+ Bundle "grep.vim"
 
 " Bundle 'tpope/vim-unimpaired' " [uu Url encode 等等
 "Bundle "tpope/vim-haml"
