@@ -2,7 +2,7 @@ task :default => [:install]
 HOMEPATH = File.expand_path("~")
 NOWPATH  = FileUtils.pwd
 NOW = Time.now.to_i
-FILES = %w(/.vimrc /.profile /.gitconfig /bin)#/.bashrc
+FILES = %w(/.vimrc /.bash_aliases /.gitconfig /bin)#/.bashrc
 
 task :install => :back_up do
   FILES.each do |file|
