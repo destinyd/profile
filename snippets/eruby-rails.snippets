@@ -72,7 +72,7 @@ snippet slt
 	<%= stylesheet_link_tag ${1::all}, :cache => ${2:true} %>
 snippet sslt
 	<%= stylesheet_link_tag "${1}" %>
-snippet %=
+snippet =
 	<%= ${1} %>
 snippet %
 	<% ${1} %>
@@ -80,3 +80,9 @@ snippet each
 	<%= ${1:@p}.each do |${2:p}| %>
 	${3}	
 	<%= end %>
+snippet ife
+	<% if ${1} %>
+	<%= ${2} %>
+	<% else %>
+	<%= ${3} %>
+	<% end -%>

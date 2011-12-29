@@ -91,3 +91,7 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+#export EC2_KEYPAIR='company ubuntu'
+export EC2_URL=https://ec2.ap-northeast-1.amazonaws.com
+export EC2_PRIVATE_KEY=$HOME/.ec2/pk-K2MGKSFLXBAXAEVXY4EMVOKMZJG43WAN.pem
+export EC2_CERT=$HOME/.ec2/cert-K2MGKSFLXBAXAEVXY4EMVOKMZJG43WAN.pem

@@ -73,7 +73,8 @@ Bundle "taq/vim-rspec"
  Bundle "scrooloose/syntastic" 
 " 重构工具
 Bundle "ecomba/vim-ruby-refactoring" 
-Bundle "danchoi/ri_vim"
+"不成熟
+"Bundle "danchoi/ri_vim"
 
  Bundle "kchmck/vim-coffee-script"
 "grep in vim 比较老"
