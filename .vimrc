@@ -80,6 +80,9 @@ Bundle "ecomba/vim-ruby-refactoring"
 "grep in vim 比较老"
  Bundle "grep.vim"
 
+" cool status bar
+ Bundle "Lokaltog/vim-powerline"
+
 " Bundle 'tpope/vim-unimpaired' " [uu Url encode 等等
 "Bundle "tpope/vim-haml"
 "Bundle "rails.vim"
