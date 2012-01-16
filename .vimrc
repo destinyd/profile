@@ -25,7 +25,7 @@ let g:snips_author = "Killua.DD"
  " vim-scripts repos
  Bundle 'L9'
  Bundle 'FuzzyFinder'
- Bundle "tpope/vim-cucumber"
+ "Bundle "tpope/vim-cucumber"
  Bundle "tpope/vim-rails"
 Bundle "taq/vim-rspec"
  " non github repos
@@ -50,7 +50,7 @@ Bundle "taq/vim-rspec"
 " Bundle 'vcscommand.vim'
  Bundle 'vim-scripts/qiushibaike'
  Bundle 'jsbeautify'
- Bundle 'xml.vim'
+ "Bundle 'xml.vim'
  Bundle 'auto_mkdir'
  Bundle 'Align'
  Bundle 'serverhorror/javascript.vim'

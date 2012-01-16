@@ -86,3 +86,7 @@ snippet ife
 	<% else %>
 	<%= ${3} %>
 	<% end -%>
+snippet cf
+	<% content_for :${1} do -%>
+	  ${2}
+	<% end -%>
