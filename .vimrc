@@ -4,84 +4,86 @@ set guifontset=-dt-interface
 set encoding=utf-8
 let $Lang="zh_CN.UTF-8"
 let g:snips_author = "Killua.DD"
- filetype off                   " required!
+filetype off                   " required!
 
- set rtp+=~/.vim/bundle/vundle/
- call vundle#rc()
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
 
- " let Vundle manage Vundle
- " required! 
- Bundle 'gmarik/vundle'
+" let Vundle manage Vundle
+" required! 
+Bundle 'gmarik/vundle'
 
- " My Bundles here:
- "
- " original repos on github
- " Gcommit...  git
- Bundle 'tpope/vim-fugitive'
- Bundle 'Lokaltog/vim-easymotion'
- Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+" My Bundles here:
+"
+" original repos on github
+" Gcommit...  git
+Bundle 'tpope/vim-fugitive'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 " be bs bv buffer理打开过去文件
- Bundle 'bufexplorer.zip' 
- " vim-scripts repos
- Bundle 'L9'
- Bundle 'FuzzyFinder'
- "Bundle "tpope/vim-cucumber"
- Bundle "tpope/vim-rails"
+Bundle 'bufexplorer.zip' 
+" vim-scripts repos
+Bundle 'L9'
+Bundle 'FuzzyFinder'
+"Bundle "tpope/vim-cucumber"
+Bundle "tpope/vim-rails"
 Bundle "taq/vim-rspec"
- " non github repos
+" non github repos
 " Bundle 'git://git.wincent.com/command-t.git'
- " snipMate 
- Bundle 'vim-scripts/snipMate'
- " ...
- " other need
- Bundle 'AutoComplPop'
+" snipMate 
+Bundle 'vim-scripts/snipMate'
+" ...
+" other need
+Bundle 'AutoComplPop'
 " Bundle 'NeoComplCache'
 " 剪贴板
 " Bundle 'fakeclip'
 "cs cst ds 两旁添加符号
- Bundle 'tpope/vim-surround' 
- " DirBrowser
- Bundle 'scrooloose/nerdtree'
- Bundle 'FindInNERDTree'
+Bundle 'tpope/vim-surround' 
+" DirBrowser
+Bundle 'scrooloose/nerdtree'
+Bundle 'FindInNERDTree'
 " Bundle 'The-NERD-Commenter'
- Bundle 'taglist.vim'
+Bundle 'taglist.vim'
 " Bundle 'nelson/cscope_maps'
 " svn git等 通用命令
 " Bundle 'vcscommand.vim'
- Bundle 'vim-scripts/qiushibaike'
- Bundle 'jsbeautify'
- "Bundle 'xml.vim'
- Bundle 'auto_mkdir'
- Bundle 'Align'
- Bundle 'serverhorror/javascript.vim'
+Bundle 'vim-scripts/qiushibaike'
+Bundle 'jsbeautify'
+"Bundle 'xml.vim'
+Bundle 'auto_mkdir'
+Bundle 'Align'
+Bundle 'serverhorror/javascript.vim'
 " % 可以跳html标签
- Bundle 'matchit.zip' 
- Bundle 'AuthorInfo'
+Bundle 'matchit.zip' 
+Bundle 'AuthorInfo'
 " ,cc ,cu ,c<space>
- Bundle 'scrooloose/nerdcommenter'
+Bundle 'scrooloose/nerdcommenter'
 "命令行 ConqueTeam
- Bundle 'rson/vim-conque' 
+Bundle 'rson/vim-conque' 
 " 自己设的,ct 
- Bundle 'wincent/Command-T'
+Bundle 'wincent/Command-T'
 "tab 完成
 " Bundle 'ervandew/supertab' 
 " c-w o 全屏  自己,,
- Bundle 'vim-scripts/ZoomWin' 
+Bundle 'vim-scripts/ZoomWin' 
 " 结束def end填充
- Bundle 'tpope/vim-endwise' 
+Bundle 'tpope/vim-endwise' 
 " 检查错误
- Bundle "scrooloose/syntastic" 
+Bundle "scrooloose/syntastic" 
 " 重构工具
 Bundle "ecomba/vim-ruby-refactoring" 
 "不成熟
 "Bundle "danchoi/ri_vim"
 
- Bundle "kchmck/vim-coffee-script"
+Bundle "kchmck/vim-coffee-script"
 "grep in vim 比较老"
- Bundle "grep.vim"
+Bundle "grep.vim"
 
 " cool status bar
- Bundle "Lokaltog/vim-powerline"
+Bundle "Lokaltog/vim-powerline"
+let g:Powerline_symbols = 'fancy'
+set t_Co=256
 
 " Bundle 'tpope/vim-unimpaired' " [uu Url encode 等等
 "Bundle "tpope/vim-haml"
@@ -90,31 +92,31 @@ Bundle "ecomba/vim-ruby-refactoring"
 "Bundle "Townk/vim-autoclose"
 "Bundle "vim-scripts/taglist.vim"
 
- filetype plugin indent on     " required! 
- "
- " Brief help
- "
- " :BundleInstall  - install bundles (won't update installed)
- " :BundleInstall! - update if installed
- "
- " :Bundles foo    - search for foo
- " :Bundles! foo   - refresh cached list and search for foo
- "
- " :BundleClean    - confirm removal of unused bundles
- " :BundleClean!   - remove without confirmation
- "
- " see :h vundle for more details
- " or wiki for FAQ
- " Note: comments after Bundle command are not allowed..
+filetype plugin indent on     " required! 
+"
+" Brief help
+"
+" :BundleInstall  - install bundles (won't update installed)
+" :BundleInstall! - update if installed
+"
+" :Bundles foo    - search for foo
+" :Bundles! foo   - refresh cached list and search for foo
+"
+" :BundleClean    - confirm removal of unused bundles
+" :BundleClean!   - remove without confirmation
+"
+" see :h vundle for more details
+" or wiki for FAQ
+" Note: comments after Bundle command are not allowed..
 
 " Enable syntax highlight
 syntax enable
- 
+
 " Show line number
 "set nu
 " show matching bracets
 set showmatch
- 
+
 """"""""""""""""""""""""""""""""""""""
 " Searching
 """"""""""""""""""""""""""""""""""""""
@@ -134,7 +136,7 @@ set laststatus=2
 """"""""""""""""""""""""""""""""""""""
 set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*
- 
+
 """""""""""""""""""""""""""""""""""""""
 " 空行
 """""""""""""""""""""""""""""""""""""""
@@ -145,14 +147,14 @@ au FileType html,python,vim,javascript setl shiftwidth=2
 au FileType html,python,vim,javascript setl tabstop=2
 au FileType java,php setl shiftwidth=4
 au FileType java,php setl tabstop=4
- 
+
 set smarttab
 set lbr
 set tw=0
- 
+
 "Auto indent
 set ai
- 
+
 " Smart indet
 set si
 "tab自动填充
@@ -163,10 +165,10 @@ set iskeyword+=_,$,@,%,#,-
 
 " C-style indeting
 "set cindent
- 
+
 " Wrap lines
 set wrap
- 
+
 " Turn backup off
 set nobackup
 set nowb
@@ -241,7 +243,7 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
- 
+
 map <Leader><Leader> :ZoomWin<CR>
 map <C-\> :tnext<CR>
 
