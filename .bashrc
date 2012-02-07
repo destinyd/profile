@@ -95,3 +95,9 @@ fi
 export EC2_URL=https://ec2.ap-northeast-1.amazonaws.com
 export EC2_PRIVATE_KEY=$HOME/.ec2/pk-K2MGKSFLXBAXAEVXY4EMVOKMZJG43WAN.pem
 export EC2_CERT=$HOME/.ec2/cert-K2MGKSFLXBAXAEVXY4EMVOKMZJG43WAN.pem
+
+export PERL_LOCAL_LIB_ROOT="/home/killuadd/perl5";
+export PERL_MB_OPT="--install_base /home/killuadd/perl5";
+export PERL_MM_OPT="INSTALL_BASE=/home/killuadd/perl5";
+export PERL5LIB="/home/killuadd/perl5/lib/perl5/x86_64-linux-gnu-thread-multi:/home/killuadd/perl5/lib/perl5";
+export PATH="/home/killuadd/perl5/bin:$PATH";
