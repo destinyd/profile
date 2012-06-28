@@ -1,17 +1,11 @@
-task :default => [:install]
+task :default => [:profile]
 HOMEPATH = File.expand_path("~")
 NOWPATH  = FileUtils.pwd
 NOW = Time.now.to_i
 FILES = %w(/.vimrc /.bash_aliases /.gitconfig /bin)#/.bashrc
 
-task :install => :back_up do
-  FILES.each do |file|
-    FileUtils.ln_s NOWPATH + file, HOMEPATH + file
-#    FileUtils.ln_s NOWPATH + '/.vimrc', HOMEPATH + '/.vimrc'
-#    FileUtils.ln_s NOWPATH + '/.bashrc', HOMEPATH + '/.bashrc'
-#    FileUtils.ln_s NOWPATH + '/bin/', HOMEPATH + '/bin'
-  end
-  puts "success"
+task :profile => [:back_up,:install,:bash_alias,:install_vundle,:snippets] do
+  puts "all success"
 end
 
 task :back_up do
@@ -21,27 +15,43 @@ task :back_up do
     rescue
     end 
   end
-#  begin
-#    FileUtils.mv "#{HOMEPATH}/.bashrc", "#{HOMEPATH}/.bashrc.#{NOW}.bak"
-#  rescue
-#  end 
-#
-#  begin
-#  FileUtils.mv "#{HOMEPATH}/.vimrc","#{HOMEPATH}/.vimrc.#{NOW}.bak"
-#  rescue
-#  end 
-#
-#  begin
-#  FileUtils.mv "#{HOMEPATH}/bin","#{HOMEPATH}/bin.#{NOW}.bak"
-#  rescue
-#  end 
+  puts "backup success"
 end
+
+task :install do
+  FILES.each do |file|
+    FileUtils.ln_s NOWPATH + file, HOMEPATH + file
+  end
+  puts "ln profile success"
+end
+
+task :bash_alias do
+  filename = HOMEPATH + '/.bashrc'
+  if File.exist?(filename) and
+    File.new(filename).read.scan /\. ~\/\.bash_aliases/
+    system "echo 'if [ -f ~/.bash_aliases ]; then \n . ~/.bash_aliases \nfi' >> ~/.bashrc"
+#    system "source ~/.bashrc"
+  end
+  puts "add bash aliases success"
+end
+
+
+task :install_vundle do
+  if File.exist?(HOMEPATH + '/.vim/bundle/vundle')
+    puts "vundle exist"
+  else
+    system "git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle"
+    system "vim -c BundleInstall"
+    puts "install vundle success"
+  end
+end
+
 
 task :snippets do
   begin
-  FileUtils.mv "#{HOMEPATH}/.vim/bundle/snipMate/snippets","#{HOMEPATH}/.vim/bundle/snipMate/snippets.#{NOW}.bak"
+    FileUtils.mv "#{HOMEPATH}/.vim/bundle/snipMate/snippets","#{HOMEPATH}/.vim/bundle/snipMate/snippets.#{NOW}.bak"
   rescue
   end 
   FileUtils.ln_s NOWPATH + '/snippets', HOMEPATH + '/.vim/bundle/snipMate/snippets'
-  puts "success"
+  puts "cp snippets success"
 end
