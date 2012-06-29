@@ -82,7 +82,7 @@ Bundle "grep.vim"
 
 " cool status bar
 Bundle "Lokaltog/vim-powerline"
-let g:Powerline_symbols = 'fancy'
+"let g:Powerline_symbols = 'fancy'
 set t_Co=256
 
 " Bundle 'tpope/vim-unimpaired' " [uu Url encode 等等

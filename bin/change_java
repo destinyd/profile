@@ -1,0 +1,6 @@
+#!/bin/bash
+sudo update-alternatives --config java
+sudo update-alternatives --config javac
+sudo update-alternatives --config jar
+sudo rm /usr/lib/jvm/default-java
+find /usr/lib/jvm/ -type d -name "jdk$1*" -exec sudo ln -s {} /usr/lib/jvm/default-java \;
