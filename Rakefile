@@ -64,3 +64,8 @@ task :conkycolors do
   FileUtils.ln_s PROFILE_PATH + '/.conkycolors', HOMEPATH + '/.conkycolors'
   puts "cp conkycolors success"
 end
+
+task :gitignore do
+  system "git config --global core.excludesfile ~/.global_ignore" if File.exist?(HOMEPATH + '/.gitignore') or system "git clone git://github.com/github/gitignore.git ~/.gitignore"
+  puts "clone github gitignore"
+end
