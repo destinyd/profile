@@ -1,0 +1,195 @@
+###################### 这篇详解分析因为字数过多，仅供参考，无法作为conkyrc配置文件运行
+# - Conky settings - # 删除带#号的注释部分后，才可以作为conkyrc配置文件运行
+###################### 或请下载使用conkyrc-default-CN文件作为conkyrc配置文件运行
+update_interval 1
+total_run_times 0
+net_avg_samples 1
+cpu_avg_samples 1
+
+imlib_cache_size 0
+double_buffer yes
+no_buffers yes
+
+format_human_readable
+
+#####################
+# - Text settings - #
+#####################
+use_xft yes
+### 默认字体设置
+xftfont WenQuanYi Micro Hei:size=8
+override_utf8_locale yes
+text_buffer_size 2048
+
+#############################
+# - Window specifications - #
+#############################
+own_window_class Conky
+own_window yes
+own_window_type desktop
+own_window_transparent yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+### 偏移量和尺寸大小
+alignment top_right
+gap_x 25
+gap_y 40
+minimum_size 185 600
+maximum_width 185
+### 进度条尺寸大小
+default_bar_size 60 8
+
+#########################
+# - Graphics settings - #
+#########################
+draw_shades no
+### 默认颜色
+default_color cccccc
+### 0 图标颜色 1 温度百分比颜色 2 数值和进度条颜色 3 自定义备用颜色
+color0 cyan
+color1 green
+color2 orange
+color3 green
+
+TEXT
+${font WenQuanYi Micro Hei:style=Bold:size=8}系统状态 $stippled_hr${font}
+############## 参数voffset用于调节上下位置；参数goto用于调节左右位置；
+# - SYSTEM - # 参数alignr用于靠右边对齐。参数font和color要有结束配对，以免混乱。
+##############
+${color0}${voffset 6}${font OpenLogos:size=19}u${font}${color}${goto 32}${voffset -14}内核版本:  ${alignr}${color2}${kernel}${color}
+${goto 32}开机时长: ${alignr}${color2}${uptime}${color}
+# |--UPDATES
+${goto 32}等待升级: ${alignr}${font Ubuntu:style=Bold:size=8}${color1}${execi 360 aptitude search "~U" | wc -l | tail}${color}${font} ${color2}个软件包${color}
+# |--CPU
+${offset 1}${color0}${font Poky:size=16}P${font}${offset -19}${voffset 9}${cpubar cpu0 4,18}${color}${voffset -16}${goto 32}CPU1 负荷: ${font Ubuntu:style=Bold:size=8}${color1}${cpu cpu1}%${font} ${alignr}${font Ubuntu:style=Bold:size=8}${color1}${execi 30 sensors | grep 'Core0' | awk '{print $3}' | sed 's/+//' | sed 's/\.0//g'}${color}${font}  ${color2}${cpugraph cpu1 8,50 }${color}
+${goto 32}CPU2 负荷: ${font Ubuntu:style=Bold:size=8}${color1}${cpu cpu2}%${font} ${alignr}${font Ubuntu:style=Bold:size=8}${color1}${execi 30 sensors | grep 'Core1' | awk '{print $3}' | sed 's/+//' | sed 's/\.0//g'}${color}${font}  ${color2}${cpugraph cpu2 8,50 }${color}
+# |--MEM
+${color0}${font Poky:size=16}M${font}${color}${goto 32}${voffset -7}内存占用率: ${font Ubuntu:style=Bold:size=8}${color1}$memperc%${color}${font}
+${offset 1}${voffset 2}${color0}${membar 4,18}${color}${goto 32}${voffset -2}总共: ${font Ubuntu:style=Bold:size=8}${color2}${memeasyfree}${color}${font} 使用: ${font Ubuntu:style=Bold:size=8}${color2}${mem}${color}${font}
+# |--PROC
+${voffset 2}${color0}${font Poky:size=15}a${font}${color}${goto 32}${voffset -10}最占用资源的进程: ${color2}${alignr 13}CPU${alignr}RAM${color}
+${voffset -1}${goto 42}${color2}${top name 1}${color}${font Ubuntu:style=Bold:size=8}${color1} ${goto 126}${top cpu 1}${alignr }${top mem 1}${color}${font}
+${voffset -1}${goto 42}${color2}${top name 2}${color}${font Ubuntu:style=Bold:size=8}${color1} ${goto 126}${top cpu 2}${alignr }${top mem 2}${color}${font}
+${voffset -1}${goto 42}${color2}${top name 3}${color}${font Ubuntu:style=Bold:size=8}${color1} ${goto 126}${top cpu 3}${alignr }${top mem 3}${color}${font}
+#############
+# - CLOCK - #
+#############
+${voffset 4}${font WenQuanYi Micro Hei:style=Bold:size=8}日期时间 $stippled_hr${font}
+### 表盘指针的字体图案
+${voffset 4}${goto 32}${font clockfaces:size=40}O${font}
+${voffset -34}${goto 41}${font zoraclockH:size=30}${color2}${execpi 120 /usr/share/conkycolors/bin/conkyClock hour}${color}${font}
+${voffset -39}${goto 35}${font zoraclockM:size=40}${color2}${execpi 60 /usr/share/conkycolors/bin/conkyClock minute}${color}${font}
+### 数字时间
+${goto 100}${voffset -50}${font Ubuntu:style=Bold:size=11}${color2}${time %H}${time :%M}${time :%S}${color}${font}
+${goto 100}${voffset 0}${time %Y年 %b%d日}${voffset 8}
+${goto 100}${voffset -8}${font WenQuanYi Micro Hei:style=Bold:size=8}${color2}${time %A}${color}${font}
+### 调用农历程序
+${goto 100}${voffset 0}${font WenQuanYi Micro Hei:size=8}${alignc}${execpi 300 ~/.conkycolors/bin/lunar}${font}
+################
+# - CALENDAR - #注意：月历的字体必须使用Mono等宽字体，否则排列不整齐。
+################注意：2012年9月和12月跨越6周，月历会比平时多出一行，因此下面要多预留一行空间
+${voffset -2}${color0}${font Poky:size=16}D${font}${voffset -8}${font Ubuntu:style=Bold:size=7}${offset -17}${voffset 4}${time %d}${font}${color}${voffset -1}${font Monospace:size=7}${execpi 300 DJS=`date +%_d`; cal -h | sed 's/日 一 二 三 四 五 六/${font WenQuanYi Micro Hei Mono:size=8} 日 一 二 三 四 五 六${font Monospace:size=7}/' |sed '2,8!d'| sed '/./!d' | sed 's/^/${goto 58} /'| sed 's/$/ /' | sed 's/^/ /' | sed /" $DJS "/s/" $DJS "/" "'${font Arial:style=Bold:size=8}${voffset -2}${offset 0}${color1} '"$DJS"'${color}${font Monospace:size=7}'" "/}${voffset -1}
+${voffset -60}${font WenQuanYi Micro Hei:size=8}今夜月相${font}
+### 调用月相（含农历）程序
+${goto 10}${font weather:size=30}${execpi 300 ~/.conkycolors/bin/mond}${font}
+${voffset 0}
+############# 默认播放的是系统 /usr/share/backgrounds 里的桌面壁纸图片
+# - PHOTO - # 可以修改 ~/.conkycolors/bin/conkyPhotoRandom 文件的 source= 项目
+############# 可改为指定自己的相册目录。
+# For a working photo widget you need to specify a file or directory in conkyPhoto or conkyPhotoRandom script in  ~/.conkycolors/bin /usr/share/conkycolors/bin folders
+${voffset -8}${font WenQuanYi Micro Hei:style=Bold:size=8}我的相册 $stippled_hr${font}
+${execi 60 ~/.conkycolors/bin/conkyPhotoRandom}${image /tmp/conkyPhoto.png -s 174x110 -p 14,350}
+${voffset 75}
+### 修改conkyrc配置文件中的 ${execi 30 ~/.conkycolors/bin/conkyPhotoRandom}${image /tmp/conkyPhoto.png -s 174x110 -p 14,350}这一行文字，其中30是30秒换一张图片。-s 174x110是指显示的图片的大小。相册的位置是-p项。14，是横值，350是竖值。横值一般不必调整，竖值就可以调整图片处于整个屏幕右端的高低。此外，还可以修改图片的显示方式，在 theme= 这个项目，有三种：1 大边框 2 无边框 3 细边框（默认）。
+####################
+# - MEDIA PLAYER - # conky-colors 8.0.5版发布在Ubuntu 12.04 版之前，所以功能支持不完全
+####################
+#${voffset 0}${font WenQuanYi Micro Hei:style=Bold:size=8}音乐欣赏 $stippled_hr
+#${font WenQuanYi Micro Hei:size=8}请等待conkycolors更新版本才能显示${font}
+### 在media player项上调整cd封面的高低要修改 ～/.conkycolors/templates/conkyPlayer.template文件。和调整图片的方法相似。${image /tmp/conkycolors/conkyCover.png -s 88x62 -p 16,505}其中 =s 是指图片的大小像素。-p 就是position了。16还是横值，505就是竖值了。
+### 关于conky显示CD封面的情况：这个只对本地mp3有用，而且你必须是一个很好的音乐收藏的玩家。好像conky不能调用.cahe文件，而且不能调用目录名字有空格的目录。
+### 在conkyPlayer.template文件中${image /tmp/conkycolors/iconkyCover.png -s 88x62 -p 16,553}改成并添加下面添加后2行代码:
+### ${image ～/.conkeycolors/icons/top.png -s 88x62 -p 16,553}${image ～/.conkeycolors/icons/你的播放器图标文件.png -s 60x60 -p 16,553}${image 你的音乐文件夹路径/[--datatype=AR]/AlbumArtSmall.jpg -s 60x60 -p 16,553}
+### 记住这3行命令是没有空格和回车的。如果你这三个图片不能重合，可以修改-s 88x62 -p 16,553的具体参数,来重合。如果你播放的mp3没图片的话，conky自己显示前2个命令，如果有的话第三个命令会覆盖第二个命令。
+### ${image 你的音乐文件夹路径/[--datatype=AR]/AlbumArtSmall.jpg -s 60x60 -p 16,553}这个是你音乐以歌手名字为目录。[--datatype=AR]（歌手） [--datatype=AL]（专辑） [--datatype=TI]（歌名）三个可选。具体你音乐目录名字来确定。AlbumArtSmall.jpg Folder.jpg Cover.jpg 三个可选。具体看你是怎么收藏音乐的。我一般是以 /歌手/专辑/歌名.mp3这样放的。liunx下是不能把不同歌手或专辑放在同一目录下的，不然你是没办法下载专辑图片和歌曲图片的，而且不支持mp3文件内置图片。不像Windows。而且windows下这些图片文件你是看不到的。
+##############
+# - NVIDIA - # 暂时没有ATI显卡的功能
+##############
+${voffset 4}${font WenQuanYi Micro Hei:style=Bold:size=8}显卡 $stippled_hr${font}
+${color0}${voffset -4}${font Poky:size=17}N${font}${color}${goto 32}${voffset -8}GPU 温度:${alignr}${font Ubuntu:style=Bold:size=8}${color1} ${exec nvidia-settings -q GPUCoreTemp | grep Attribute | cut -d ' ' -f 6 | cut -c 1-2}${font}${color}°C
+${goto 32}GPU 时钟:${alignr}${font Ubuntu:style=Bold:size=8}${color1} ${exec nvidia-settings -q GPU2DClockFreqs -t}${font}${color}MHz
+${goto 32}显存容量:${alignr}${font Ubuntu:style=Bold:size=8}${color1} ${exec nvidia-settings -q VideoRam -t}${font}${color}KiB
+${goto 32}驱动版本:${alignr}${font Ubuntu:style=Bold:size=8}${color1} ${exec nvidia-settings -q NvidiaDriverVersion -t}${font}${color}
+##########
+# - HD - #
+########## 如果有多个硬盘，请在配置命令参数中指定。
+${voffset 4}${font WenQuanYi Micro Hei:style=Bold:size=8}硬盘 $stippled_hr${font}
+# |--HDTEMP1
+  ${voffset 4}${color0}${font Weather:size=15}y${font}${color}${voffset -3}${goto 32}温度: ${font Ubuntu:style=Bold:size=8}${color1}${execi 120 hddtemp /dev/sda -n --unit=C}°C${color}${font}${alignr}${color2}/dev/sda${color}
+${execpi 30 /usr/share/conkycolors/bin/conkyHD1}
+###############
+# - NETWORK - #
+############### 如果有多个网络设备，请在配置命令参数中指定使用的是哪个。
+${voffset 4}${font WenQuanYi Micro Hei:style=Bold:size=8}网络 $stippled_hr${font}
+# |--WLAN0
+${if_up wlan0}
+${voffset -13}${color0}${font VariShapes Solid:size=14}q${font}${color}${goto 32}${voffset -6}上传: ${font Ubuntu:style=Bold:size=8}${color1}${upspeed wlan0}${color}${font} ${alignr}${color2}${upspeedgraph wlan0 8,60 }${color}
+${goto 32}总计: ${font Ubuntu:style=Bold:size=8}${color2}${totalup wlan0}${color}${font}
+${voffset -2}${color0}${font VariShapes Solid:size=14}Q${font}${color}${goto 32}${voffset -6}下载: ${font Ubuntu:style=Bold:size=8}${color1}${downspeed wlan0}${color}${font} ${alignr}${color2}${downspeedgraph wlan0 8,60 }${color}
+${goto 32}总计: ${font Ubuntu:style=Bold:size=8}${color2}${totaldown wlan0}${color}${font}
+${voffset -2}${color0}${font Poky:size=14}Y${font}${color}${goto 32}${voffset -2}Signal: ${font Ubuntu:style=Bold:size=8}${color1}${wireless_link_qual_perc wlan0}%${color}${font} ${alignr}${color2}${wireless_link_bar 8,60 wlan0}${color}
+${voffset 4}${color0}${font Poky:size=13}w${font}${color}${goto 32}${voffset -8}本地 IP: ${alignr}${color2}${addr wlan0}${color}
+${goto 32}对外 IP: ${alignr}${color2}${execi 10800 /usr/share/conkycolors/bin/conkyIp}${color}
+# |--ETH0
+${else}${if_up eth0}
+${voffset -13}${color0}${font VariShapes Solid:size=14}q${font}${color}${goto 32}${voffset -6}上传: ${font Ubuntu:style=Bold:size=8}${color1}${upspeed eth0}${color}${font} ${alignr}${color2}${upspeedgraph eth0 8,60 }${color}
+${goto 32}总计: ${font Ubuntu:style=Bold:size=8}${color2}${totalup eth0}${color}${font}
+${voffset -2}${color0}${font VariShapes Solid:size=14}Q${font}${color}${goto 32}${voffset -6}下载: ${font Ubuntu:style=Bold:size=8}${color1}${downspeed eth0}${color}${font} ${alignr}${color2}${downspeedgraph eth0 8,60 }${color}
+${goto 32}总计: ${font Ubuntu:style=Bold:size=8}${color2}${totaldown eth0}${color}${font}
+${voffset -2}${color0}${font Poky:size=13}w${font}${color}${goto 32}${voffset -4}本地 IP: ${alignr}${color2}${addr eth0}${color}
+${goto 32}对外 IP: ${alignr}${color2}${execi 60 /usr/share/conkycolors/bin/conkyIp}${color}
+# |--PPP0
+${else}${if_up ppp0}
+${voffset -13}${color0}${font VariShapes Solid:size=14}q${font}${color}${goto 32}${voffset -6}上传: ${font Ubuntu:style=Bold:size=8}${color1}${upspeed ppp0}${color}${font} ${alignr}${color2}${upspeedgraph ppp0 8,60 }${color}
+${goto 32}总计: ${font Ubuntu:style=Bold:size=8}${color2}${totalup ppp0}${color}${font}
+${voffset -2}${color0}${font VariShapes Solid:size=14}Q${font}${color}${goto 32}${voffset -6}下载: ${font Ubuntu:style=Bold:size=8}${color1}${downspeed ppp0}${color}${font} ${alignr}${color2}${downspeedgraph ppp0 8,60 }${color}
+${goto 32}总计: ${font Ubuntu:style=Bold:size=8}${color2}${totaldown ppp0}${color}${font}
+${voffset -2}${color0}${font Poky:size=13}w${font}${color}${goto 32}${voffset -4}本地 IP: ${alignr}${color2}${addr ppp0}${color}
+${else}${voffset 4}${color0}${font PizzaDude Bullets:size=12}4${font}${color}${goto 32}网络不可用${voffset 14}${endif}${endif}${endif}
+##################
+# - CN WEATHER - #
+##################
+### 网站 http://www.weather.com.cn/ 请在其网站搜索栏中输入您所在的城市拼音字母（或英文名称），然后在浏览器的地址栏可以看到相应的城市代码。例如：南宁nanning的代码为101300101 。请把城市代码复制到程序中，替换原来的。
+### 实际调用网址 http://wap.weather.com.cn/data/sk/101300101.html
+### 实际调用网址 http://m.weather.com.cn/data/101300101.html
+${voffset -10}${font WenQuanYi Micro Hei:style=Bold:size=8}天气预报 $stippled_hr${font}
+### 程序打开两个网页，保存到tmp临时目录forcast和current文件
+${execi 600 curl -s --connect-timeout 30 "http://m.weather.com.cn/data/101300101.html" >/tmp/forcast }${execi 600 curl -s --connect-timeout 30 "http://wap.weather.com.cn/data/sk/101300101.html" >/tmp/current }
+### 把气候中文替换为天气字体图形
+${voffset 0}${font ConkyWeather:style=Bold:size=18}${color0}${voffset -10}${execi 600 sed  's/^.*"img_title_single":"//' /tmp/forcast | sed 's/",".*$//' | sed 's/大到暴雪/r/;t w-0;s/暴雪/r/;t w-0;s/中到大雪/q/;t w-0;s/大雪/q/;t w-0;s/小到中雪/p/;t w-0;s/中雪/p/;t w-0;s/小雪/o/;t w-0;s/雷雨/l/;t w-0;s/雷阵雨/k/;t w-0;s/大到暴雨/j/;t w-0;s/暴雨/j/;t w-0;s/中到大雨/i/;t w-0;s/大雨/i/;t w-0;s/小到中雨/h/;t w-0;s/中雨/h/;t w-0;s/小雨/s/;t w-0;s/阵雨/g/;t w-0;s/阴/f/;t w-0;s/多云/e/;t w-0;s/雾/u/;t w-0;s/晴/a/;t w-0;s/转//;t w-0;:w-0;'}${color}${font}
+### 把风向中文替换为方向字体图形
+${goto 105}${voffset -15}${font Arrows:style=Bold:size=18}${color0}${voffset -10}${execi 600 sed  's/^.*"WD":"//' /tmp/current | sed 's/",".*$//' | sed 's/无持续风向/v/;t w-0;s/旋转风/v/;t w-0;s/西北风/g/;t w-0;s/西南风/c/;s/东北风/k/;t w-0;s/东南风/o/;t w-0;t w-0;s/南风/a/;t w-0;s/西风/e/;t w-0;s/北风/i/;t w-0;s/东风/m/;t w-0;s/转//;t w-0;:w-0;'}${color}${font}
+### 提取所在城市名称、当前气候信息，湿度信息
+${voffset -22}${goto 35}${color2}${execi 600 sed  's/^.*"city":"//' /tmp/current | sed 's/",".*$//' }: ${execi 600 sed  's/^.*"img_title_single":"//' /tmp/forcast | sed 's/",".*$//' } ${alignr}湿度：${execi 600 sed  's/^.*"SD":"//' /tmp/current | sed 's/",".*$//' }${color} 
+### 提取风向、风力信息，为湿度增加进度条显示
+${voffset 0}${goto 35}${color2}${execi 600 sed  's/^.*"WD":"//' /tmp/current | sed 's/",".*$//' } ${execi 600 sed  's/^.*"WS":"//' /tmp/current | sed 's/",".*$//' } ${alignr}${execbar sed  's/^.*"SD":"//' /tmp/current | sed 's/",".*$//'}${color}${font}
+${voffset 5}${color0}${font ConkyWeather:size=24}E${font}${color}
+### 提取当前温度，以及今日预报（最高最低）温度
+${voffset -35}${goto 32}${font WenQuanYi Micro Hei:size=8}今日: ${color2}${execi 600 sed  's/^.*"temp":"//' /tmp/current | sed 's/",".*$//' }°C${color} ${alignr}早晚：
+### 温度计图形
+${color2}${execi 600 sed  's/^.*"temp1":"//' /tmp/forcast | sed 's/",".*$//' | sed 's/℃//'| sed 's/℃/°C/' }${color}
+${goto 32}${font WenQuanYi Micro Hei:size=8}明日: ${color1}${execi 600 sed  's/^.*"weather2":"//' /tmp/forcast | sed 's/",".*$//' } ${alignr}${execi 600 sed  's/^.*"temp2":"//' /tmp/forcast | sed 's/",".*$//' | sed 's/℃//'| sed 's/℃/°C/'}${color}${font}
+${goto 32}${font WenQuanYi Micro Hei:size=8}后日: ${color1}${execi 600 sed  's/^.*"weather3":"//' /tmp/forcast | sed 's/",".*$//' } ${alignr}${execi 600 sed  's/^.*"temp3":"//' /tmp/forcast | sed 's/",".*$//' | sed 's/℃//'| sed 's/℃/°C/' }${color}${font}
+### 天气程序的编写不难，难的是很难找到、也很少有网站提供“简洁的天气代码”。有些网站的天气信息比较全，但因为其网页版面有可能经常变化，所以会影响到程序的运行，所以不能采用。
+### http://www.weather.gov.cn/publish/forecast/AGX/nanning.html
+### http://www.weather.gov.cn/publish/forecast/AGX/nanningchengqu_iframe.html
+############## 调用股票程序
+# - Stocks - # URL="http://hq.sinajs.cn/list=s_sh000001,s_sz399001,s_sh600900,s_sz300272"
+##############
+${voffset 4}${font WenQuanYi Micro Hei:style=Bold:size=8}股票行情 $stippled_hr${font}
+${voffset 4}${color2}${font WenQuanYi Micro Hei:size=7}${execi 300 bash ~/.conkycolors/bin/stockwidget}${color}
+##############
+# - PIDGIN - # Ubuntu 12.04 版默认没有QQ插件
+##############
+${voffset 4}${font WenQuanYi Micro Hei:style=Bold:size=8}即时通讯 $stippled_hr${font}${if_running pidgin}
+${voffset 4}${execpi 10 /usr/share/conkycolors/bin/conkyPidgin -o -s -l 5}${else}
+${voffset 4}${color0}${font PizzaDude Bullets:size=12}4${font}${color}${goto 32}Pidgin 没有运行${endif}

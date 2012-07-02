@@ -1,0 +1,122 @@
+######################
+# - Conky settings - #
+######################
+update_interval 1
+total_run_times 0
+net_avg_samples 1
+cpu_avg_samples 1
+
+imlib_cache_size 0
+double_buffer yes
+no_buffers yes
+
+format_human_readable
+
+#####################
+# - Text settings - #
+#####################
+use_xft yes
+### 默认字体设置
+xftfont WenQuanYi Micro Hei:size=8
+override_utf8_locale yes
+text_buffer_size 2048
+
+#############################
+# - Window specifications - #
+#############################
+own_window_class Conky
+own_window yes
+own_window_type desktop
+own_window_transparent yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+### 偏移量和尺寸大小
+alignment top_right
+gap_x 0
+gap_y 40
+minimum_size 182 0
+maximum_width 182
+### 进度条尺寸大小
+default_bar_size 60 8
+
+#########################
+# - Graphics settings - #
+#########################
+draw_shades no
+### 默认颜色
+default_color cccccc
+### 0 圆环颜色 1 百分比颜色 2 数值颜色 3 自定义备用颜色
+color0 white
+color1 FF4141
+color2 cyan
+color3 DC0000
+
+
+lua_load /usr/share/conkycolors/scripts/conkyRing.lua
+lua_draw_hook_post main white FF4141 2 
+
+TEXT
+${voffset 12}
+############## 参数voffset用于调节上下位置；参数goto用于调节左右位置；
+# - SYSTEM - # 参数alignr用于靠右边对齐。参数font和color要有结束配对，以免混乱。
+##############
+# |--CPU 没有温度
+${goto 90}${font Ubuntu:style=Bold:size=8}${color2}${freq_g 0}${color} GHZ${font}
+${goto 90}CPU1: ${font Ubuntu:style=Bold:size=8}${color1}${cpu cpu1}%${color}${font}
+${goto 90}CPU2: ${font Ubuntu:style=Bold:size=8}${color1}${cpu cpu2}%${color}${font}
+# |--MEM
+${voffset 15}
+${goto 90}内存: ${font Ubuntu:style=Bold:size=8}${color1}$memperc%${color}${font}
+${goto 90}空闲: ${font Ubuntu:style=Bold:size=8}${color2}${memeasyfree}${color}${font}
+${goto 90}使用: ${font Ubuntu:style=Bold:size=8}${color2}${mem}${color}${font}
+# |--SWAP
+${voffset 15}
+${goto 90}交换分区: ${font Ubuntu:style=Bold:size=8}${color1}$swapperc%${color}${font}
+${goto 90}空闲: ${font Ubuntu:style=Bold:size=8}${color2}${swapmax}${color}${font}
+${goto 90}使用: ${font Ubuntu:style=Bold:size=8}${color2}${swap}${color}${font}
+#############
+# - CLOCK - # 时钟
+#############
+${voffset 48}
+${alignr 40}${time %Y %b%d日}
+${alignr 42}${voffset -2}${font WenQuanYi Micro Hei:style=Bold:size=8}${color2}${time %A}${color}${font}
+${voffset 14}
+##########
+# - HD - # 硬盘
+##########
+${voffset 15}
+${goto 90}系统根分区
+${goto 90}空闲: ${font Ubuntu:style=Bold:size=8}${color2}${fs_free /}${color}${font}
+${goto 90}使用: ${font Ubuntu:style=Bold:size=8}${color2}${fs_used /}${color}${font}
+${voffset 15}
+${goto 90}用户分区
+${goto 90}空闲: ${font Ubuntu:style=Bold:size=8}${color2}${fs_free /home}${color}${font}
+${goto 90}使用: ${font Ubuntu:style=Bold:size=8}${color2}${fs_used /home}${color}${font}
+####################
+# - MEDIA PLAYER - # conky-colors 8.0.5版发布在Ubuntu 12.04 版之前，所以功能支持不完全
+####################
+${voffset -4}
+${execi 6 /home/abc/.conkycolors/bin/conkyCover}${execpi 10 /usr/share/conkycolors/bin/conkyRhythmbox -t /home/abc/.conkycolors/templates/conkyPlayer.template}${voffset -10}
+###############
+# - NETWORK - # 如果有多个网络设备，请在配置命令参数中指定使用的是哪个。
+###############
+${voffset 4}
+# |--WLAN0
+${if_up wlan0}
+${goto 100}上传: ${font Ubuntu:style=Bold:size=8}${color1}${upspeed wlan0}${color}${font}
+${goto 100}总计: ${font Ubuntu:style=Bold:size=8}${color2}${totalup wlan0}${color}${font}
+${goto 100}下载: ${font Ubuntu:style=Bold:size=8}${color1}${downspeed wlan0}${color}${font}
+${goto 100}总计: ${font Ubuntu:style=Bold:size=8}${color2}${totaldown wlan0}${color}${font}
+${goto 100}信号: ${font Ubuntu:style=Bold:size=8}${color1}${wireless_link_qual wlan0}%${color}${font}
+# |--ETH0
+${else}${if_up eth0}
+${goto 100}上传: ${font Ubuntu:style=Bold:size=8}${color1}${upspeed eth0}${color}${font}
+${goto 100}总计: ${font Ubuntu:style=Bold:size=8}${color2}${totalup eth0}${color}${font}
+${goto 100}下载: ${font Ubuntu:style=Bold:size=8}${color1}${downspeed eth0}${color}${font}
+${goto 100}总计: ${font Ubuntu:style=Bold:size=8}${color2}${totaldown eth0}${color}${font}
+# |--PPP0
+${else}${if_up ppp0}
+${goto 100}上传: ${font Ubuntu:style=Bold:size=8}${color1}${upspeed ppp0}${color}${font}
+${goto 100}总计: ${font Ubuntu:style=Bold:size=8}${color2}${totalup ppp0}${color}${font}
+${goto 100}下载: ${font Ubuntu:style=Bold:size=8}${color1}${downspeed ppp0}${color}${font}
+${goto 100}总计: ${font Ubuntu:style=Bold:size=8}${color2}${totaldown ppp0}${color}${font}
+${endif}${endif}${endif}

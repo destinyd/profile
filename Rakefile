@@ -1,6 +1,6 @@
 task :default => [:profile]
 HOMEPATH = File.expand_path("~")
-NOWPATH  = FileUtils.pwd
+PROFILE_PATH  = FileUtils.pwd
 NOW = Time.now.to_i
 FILES = %w(/.vimrc /.bash_aliases /.gitconfig /bin)#/.bashrc
 
@@ -20,7 +20,7 @@ end
 
 task :install do
   FILES.each do |file|
-    FileUtils.ln_s NOWPATH + file, HOMEPATH + file
+    FileUtils.ln_s PROFILE_PATH + file, HOMEPATH + file
   end
   puts "ln profile success"
 end
@@ -52,6 +52,15 @@ task :snippets do
     FileUtils.mv "#{HOMEPATH}/.vim/bundle/snipMate/snippets","#{HOMEPATH}/.vim/bundle/snipMate/snippets.#{NOW}.bak"
   rescue
   end 
-  FileUtils.ln_s NOWPATH + '/snippets', HOMEPATH + '/.vim/bundle/snipMate/snippets'
+  FileUtils.ln_s PROFILE_PATH + '/snippets', HOMEPATH + '/.vim/bundle/snipMate/snippets'
   puts "cp snippets success"
+end
+
+task :conkycolors do
+  begin
+    FileUtils.mv "#{HOMEPATH}/.conkycolors","#{HOMEPATH}/.conkycolors.#{NOW}.bak"
+  rescue
+  end 
+  FileUtils.ln_s PROFILE_PATH + '/.conkycolors', HOMEPATH + '/.conkycolors'
+  puts "cp conkycolors success"
 end

@@ -1,0 +1,11 @@
+#!/bin/bash
+URL="http://hq.sinajs.cn/list=s_sh000001,s_sz399001,s_sh600900,s_sz300272"
+curl -s --connect-timeout 30 $URL | iconv \
+   -f gb2312 -t utf-8 | awk \
+   -F\" '{ print $2 }' | awk \
+      '
+      BEGIN {FS=","}
+      {
+         if (NF==6) {printf("%-12s\t  %7.2f\t   %5.2f\t      涨跌  %5.2f %%\n", $1, $2, $3, $4)}
+      }
+      '
