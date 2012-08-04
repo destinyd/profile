@@ -266,6 +266,7 @@ map <C-A-s> :wall<CR>
 " 我
 map <Leader>tn :tabnew<CR>
 map <Leader>ct :CommandT <CR>
+map <Leader>ss :w !sudo tee % <CR>
 
 "外部粘贴
 vmap <C-c> y:call system("xclip -i -selection clipboard", getreg("\""))<CR>:call system("xclip -i", getreg("\""))<CR>
