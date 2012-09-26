@@ -24,7 +24,7 @@ Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 Bundle 'bufexplorer.zip' 
 " vim-scripts repos
 Bundle 'L9'
-Bundle 'FuzzyFinder'
+"Bundle 'FuzzyFinder'
 "Bundle "tpope/vim-cucumber"
 Bundle "tpope/vim-rails"
 Bundle "taq/vim-rspec"
@@ -41,8 +41,8 @@ Bundle 'AutoComplPop'
 "cs cst ds 两旁添加符号
 Bundle 'tpope/vim-surround' 
 " DirBrowser
-Bundle 'scrooloose/nerdtree'
-Bundle 'FindInNERDTree'
+"Bundle 'scrooloose/nerdtree'
+"Bundle 'FindInNERDTree'
 " Bundle 'The-NERD-Commenter'
 Bundle 'taglist.vim'
 " Bundle 'nelson/cscope_maps'
@@ -84,6 +84,8 @@ Bundle "grep.vim"
 Bundle "Lokaltog/vim-powerline"
 "let g:Powerline_symbols = 'fancy'
 set t_Co=256
+
+Bundle "kien/ctrlp.vim"
 
 " Bundle 'tpope/vim-unimpaired' " [uu Url encode 等等
 "Bundle "tpope/vim-haml"
@@ -221,22 +223,16 @@ highlight StatusLine term=bold,reverse cterm=bold,reverse
 " KEYMAPS
 """""""""""""""""""""""""""""""""""""""""""
 let mapleader=","
-map <leader>fF :FufFile<CR>
-map <leader>fe :FufTaggedFile<CR>
-map <leader>fg :FufTag<CR>
-map <leader>fb :FufBuffer<CR>
-
 map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
 
 " switch buffers with Tab
 " map <C-Tab> :bn<CR>
 map <S-Tab> :bp<CR>
 
-map <F1> :FufFile<CR>
-map <F2> :FufBuffer<CR>
-map <F3> :FufDir<CR>
+"map <F2> :FufFile<CR>
+"map <F3> :FufBuffer<CR>
 map <F4> :TlistOpen<CR>
-map <F5> :NERDTreeToggle<CR>
+"map <F5> :NERDTreeToggle<CR>
 nmap <F6> :AuthorInfoDetect<cr> 
 "简单换窗
 map <C-j> <C-W>j
@@ -246,6 +242,7 @@ map <C-l> <C-W>l
 
 map <Leader><Leader> :ZoomWin<CR>
 map <C-\> :tnext<CR>
+"map <C-p> :Ctrlp<CR>
 
 map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 " Unimpaired configuration
@@ -271,3 +268,14 @@ map <Leader>ss :w !sudo tee % <CR>
 "外部粘贴
 vmap <C-c> y:call system("xclip -i -selection clipboard", getreg("\""))<CR>:call system("xclip -i", getreg("\""))<CR>
 nmap <C-v> :call setreg("\"",system("xclip -o -selection clipboard"))<CR>p
+
+" ctrlp
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+
+"let g:ctrlp_custom_ignore = '\v[\/](\.git|\.hg|\.svn)$'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](\.git|\.hg|\.svn)$',
+  \ 'file': '\.exe$\|\.so$\|\.dll$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
