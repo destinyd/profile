@@ -13,6 +13,15 @@ call vundle#rc()
 " required! 
 Bundle 'gmarik/vundle'
 
+"系统类的
+"文件操作
+"Bundle 'tpope/vim-eunuch'
+
+
+"html to text
+Bundle 'plasticboy/vim-markdown'
+
+
 " My Bundles here:
 "
 " original repos on github
@@ -53,7 +62,8 @@ Bundle 'jsbeautify'
 "Bundle 'xml.vim'
 Bundle 'auto_mkdir'
 Bundle 'Align'
-Bundle 'serverhorror/javascript.vim'
+" 取消？
+"Bundle 'serverhorror/javascript.vim'
 " % 可以跳html标签
 Bundle 'matchit.zip' 
 Bundle 'AuthorInfo'
@@ -86,6 +96,19 @@ Bundle "Lokaltog/vim-powerline"
 set t_Co=256
 
 Bundle "kien/ctrlp.vim"
+
+" ' " 闭合
+Bundle "Raimondi/delimitMate"
+"tpope 专场
+Bundle "tpope/vim-unimpaired"
+
+" rails
+Bundle "tpope/vim-bundler"
+Bundle "tpope/vim-rake"
+"eruby highlight 和snip % 之类冲突
+"Bundle "banyan/eruby.vim"
+Bundle "briancollins/vim-jst"
+
 
 " Bundle 'tpope/vim-unimpaired' " [uu Url encode 等等
 "Bundle "tpope/vim-haml"
