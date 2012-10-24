@@ -9,7 +9,7 @@ alias fphp='grep -rn --include=*.php '
 alias fnsvn='grep -rn --color --exclude=*.svn-* '
 alias mphpscope='find . -type f -name "*.php" > cscope.files &&  cscope -bq'
 alias my='mysql -uroot -p --default-character-set=utf8'
-alias hosts='sv /etc/hosts'
+alias hosts='vim /etc/hosts'
 alias mig="bundle exec rake db:migrate"
 alias ar='sudo service apache2 restart'
 alias update='sudo apt-get update'

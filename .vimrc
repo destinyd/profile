@@ -109,6 +109,9 @@ Bundle "tpope/vim-rake"
 "Bundle "banyan/eruby.vim"
 Bundle "briancollins/vim-jst"
 
+"thor 脚本
+Bundle "jc00ke/thor.vim"
+
 
 " Bundle 'tpope/vim-unimpaired' " [uu Url encode 等等
 "Bundle "tpope/vim-haml"
