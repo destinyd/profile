@@ -58,6 +58,7 @@ color3 green
 #color3 2C001E
 
 TEXT
+${color yellow}$time - 星期 ${time %u}$color
 ${font WenQuanYi Micro Hei:style=Bold:size=12}系统状态 $stippled_hr${font}
 ##############
 # - SYSTEM - #
@@ -67,10 +68,20 @@ ${goto 32}开机时长: ${alignr 30}${color2}${uptime}${color}
 # |--UPDATES
 #${goto 32}等待升级: ${alignr 30}${font Ubuntu:style=Bold:size=12}${color1}${execi 360 aptitude search "~U" | wc -l | tail}${color}${font} ${color2}个软件包${color}
 # |--CPU
-${offset 1}${color0}${font Poky:size=16}P${font}${offset -19}${voffset 9}${cpubar cpu0 4,18}${color}${voffset -16}${goto 32}CPU1: ${font Ubuntu:style=Bold:size=12}${color1}${cpu cpu1}%${font} ${alignr 30}${font Ubuntu:style=Bold:size=12}${color1}${execi 30 sensors | grep 'Core 0' | awk '{print $3}' | sed 's/+//' | sed 's/\.0//g'}${color}${font}  ${color2}${cpugraph cpu1 8,50 77216F 2C001E}${color}
-${goto 32}CPU2: ${font Ubuntu:style=Bold:size=12}${color1}${cpu cpu2}%${font} ${alignr 30}${font Ubuntu:style=Bold:size=12}${color1}${execi 30 sensors | grep 'Core 1' | awk '{print $3}' | sed 's/+//' | sed 's/\.0//g'}${color}${font}  ${color2}${cpugraph cpu2 8,50 77216F 2C001E}${color}
-${goto 32}CPU3: ${font Ubuntu:style=Bold:size=12}${color1}${cpu cpu3}%${font} ${alignr 30}${font Ubuntu:style=Bold:size=12}${color1}${execi 30 sensors | grep 'Core 2' | awk '{print $3}' | sed 's/+//' | sed 's/\.0//g'}${color}${font}  ${color2}${cpugraph cpu3 8,50 77216F 2C001E}${color}
-${goto 32}CPU4: ${font Ubuntu:style=Bold:size=12}${color1}${cpu cpu4}%${font} ${alignr 30}${font Ubuntu:style=Bold:size=12}${color1}${execi 30 sensors | grep 'Core 3' | awk '{print $3}' | sed 's/+//' | sed 's/\.0//g'}${color}${font}  ${color2}${cpugraph cpu4 8,50 77216F 2C001E}${color}
+${offset 1}${color0}${font Poky:size=16}P${font}${offset -19}${voffset 9}${cpubar cpu0 4,18}${color}${voffset -16}${goto 32}CPU1: ${font Ubuntu:style=Bold:size=12}${color1}${cpu cpu1}%${font} ${alignr 30}${font Ubuntu:style=Bold:size=12}${color1}${execi 30 sensors | grep 'Core 0' | awk '{print $3}' | sed 's/+//' | sed 's/\.0//g'}${color}${font}  ${color2}${cpubar cpu1 8,50 42AE4A eeeeee}${color}
+${goto 32}CPU2: ${font Ubuntu:style=Bold:size=12}${color1}${cpu cpu2}%${font} ${alignr 30}${font Ubuntu:style=Bold:size=12}${color1}${execi 30 sensors | grep 'Core 1' | awk '{print $3}' | sed 's/+//' | sed 's/\.0//g'}${color}${font}  ${color2}${cpubar cpu2 8,50 42AE4A eeeeee}${color}
+${goto 32}CPU3: ${font Ubuntu:style=Bold:size=12}${color1}${cpu cpu3}%${font} ${alignr 30}${font Ubuntu:style=Bold:size=12}${color1}${execi 30 sensors | grep 'Core 2' | awk '{print $3}' | sed 's/+//' | sed 's/\.0//g'}${color}${font}  ${color2}${cpubar cpu3 8,50 42AE4A eeeeee}${color}
+${goto 32}CPU4: ${font Ubuntu:style=Bold:size=12}${color1}${cpu cpu4}%${font} ${alignr 30}${font Ubuntu:style=Bold:size=12}${color1}${execi 30 sensors | grep 'Core 3' | awk '{print $3}' | sed 's/+//' | sed 's/\.0//g'}${color}${font}  ${color2}${cpubar cpu4 8,50 42AE4A eeeeee}${color}
+#CPU${alignr 30}${color1}${cpu cpu0}%
+#$color${cpugraph cpu0 42AE4A eeeeee}$color
+#Core 1${alignr 30}${color1}${cpu cpu1}% ${color1}${execi 30 sensors | grep 'Core 0' | awk '{print $3}' | sed 's/+//' | sed 's/\.0//g'}${color}
+#$color${cpugraph cpu1 42AE4A eeeeee}$color
+#Core 2${alignr 30}${color1}${cpu cpu2}% ${color1}${execi 30 sensors | grep 'Core 1' | awk '{print $3}' | sed 's/+//' | sed 's/\.0//g'}${color}
+#$color${cpugraph cpu2 42AE4A eeeeee}$color
+#Core 3${alignr 30}${color1}${cpu cpu3}% ${color1}${execi 30 sensors | grep 'Core 2' | awk '{print $3}' | sed 's/+//' | sed 's/\.0//g'}${color}
+#$color${cpugraph cpu3 42AE4A eeeeee}$color
+#Core 4${alignr 30}${color1}${cpu cpu4}% ${color1}${execi 30 sensors | grep 'Core 3' | awk '{print $3}' | sed 's/+//' | sed 's/\.0//g'}${color}
+#$color${cpugraph cpu4 42AE4A eeeeee}$color
 # |--MEM
 ${color0}${font Poky:size=16}M${font}${color}${goto 32}${voffset -7}RAM: ${font Ubuntu:style=Bold:size=12}${color1}$memperc%${color}${font}
 ${offset 1}${voffset 2}${color0}${membar 4,18}${color}${goto 32}${voffset -2}F: ${font Ubuntu:style=Bold:size=12}${color2}${memeasyfree}${color}${font} U: ${font Ubuntu:style=Bold:size=12}${color2}${mem}${color}${font}
@@ -101,20 +112,18 @@ ${goto 100}${voffset 0}${font WenQuanYi Micro Hei:size=8}${alignc}${execpi 300 /
 ${voffset -2}${color0}${font Poky:size=16}D${font}${voffset -8}${font Ubuntu:style=Bold:size=7}${offset -17}${voffset 4}${time %d}${font}${color}${voffset -1}${font Monospace:size=7}${execpi 300 DJS=`date +%_d`; cal -m | sed 's/日 一 二 三 四 五 六/${font WenQuanYi Micro Hei Mono:size=8} 日 一 二 三 四 五 六${font Monospace:size=7}/' |sed '2,8!d'| sed '/./!d' | sed 's/^/${goto 58} /'| sed 's/$/ /' | sed 's/^/ /' | sed /" $DJS "/s/" $DJS "/" "'${font Arial:style=Bold:size=12}${voffset -2}${offset 0}${color1} '"$DJS"'${color}${font Monospace:size=7}'" "/}${voffset -1}
 ${voffset -30}${font WenQuanYi Micro Hei:size=8}今夜月相${font}
 ${goto 10}${font weather:size=30}${execpi 300 /home/dd/.conkycolors/bin/moon}${font}
-${voffset -20}
+#${voffset -20}
 ##########
 # - HD - #
 ##########
 ${voffset 4}${font WenQuanYi Micro Hei:style=Bold:size=12}硬盘 $stippled_hr${font}
 # |--HDTEMP1
-  ${voffset 4}${color0}${font Weather:size=15}y${font}${color}${voffset -3}${goto 32}温度: ${font Ubuntu:style=Bold:size=12}${color1}${execi 120 hddtemp /dev/sda -n --unit=C}°C${color}${font}${alignr 30}${color2}/dev/sda${color}
-${execpi 30 /usr/share/conkycolors/bin/conkyHD1}
-  ${voffset 4}${color0}${font Weather:size=15}y${font}${color}${voffset -3}${goto 32}温度: ${font Ubuntu:style=Bold:size=12}${color1}${execi 120 hddtemp /dev/sdb -n --unit=C}°C${color}${font}${alignr 30}${color2}/dev/sdb${color}
+  ${voffset 4}${color0}${font Weather:size=15}y${font}${color}${voffset -3}${goto 32}温度: ${font Ubuntu:style=Bold:size=12}${color1}${execi 120 hddtemp /dev/sdb -n --unit=C}°C${color}${font}${alignr 30}${color2}/dev/sda${color}
 ${execpi 30 /usr/share/conkycolors/bin/conkyHD1}
 ###############
 # - NETWORK - #
 ###############
-${voffset 4}${font WenQuanYi Micro Hei:style=Bold:size=12}网络 $stippled_hr${font}
+${voffset -20}${font WenQuanYi Micro Hei:style=Bold:size=12}网络 $stippled_hr${font}
 # |--WLAN0
 ${if_up wlan0}
 ${voffset -13}${color0}${font VariShapes Solid:size=14}q${font}${color}${goto 32}${voffset -6}上传: ${font Ubuntu:style=Bold:size=12}${color1}${upspeed wlan0}${color}${font} ${alignr 30}${color2}${upspeedgraph wlan0 8,60 }${color}

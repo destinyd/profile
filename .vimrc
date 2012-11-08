@@ -112,6 +112,9 @@ Bundle "briancollins/vim-jst"
 "thor 脚本
 Bundle "jc00ke/thor.vim"
 
+"Riv: reStructuredText in Vim
+Bundle "Rykka/riv.vim"
+
 
 " Bundle 'tpope/vim-unimpaired' " [uu Url encode 等等
 "Bundle "tpope/vim-haml"
