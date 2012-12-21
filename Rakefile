@@ -2,7 +2,7 @@ task :default => [:profile]
 HOMEPATH = File.expand_path("~")
 PROFILE_PATH  = FileUtils.pwd
 NOW = Time.now.to_i
-FILES = %w(/.vimrc /.bash_aliases /.gitconfig /bin)#/.bashrc
+FILES = %w(/.vimrc /.bash_aliases /.gitconfig /.railsrc /bin)#/.bashrc
 
 task :profile => [:back_up,:install,:bash_alias,:install_vundle,:snippets] do
   puts "all success"
