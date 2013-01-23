@@ -49,4 +49,4 @@ export RUBY_GC_MALLOC_LIMIT=100000000
 #ruby falcon patch
 
 #git proxy for ssh for github
-export GIT_SSH=/home/dd/bin/socks5proxyssh
+#export GIT_SSH=/home/dd/bin/socks5proxyssh
