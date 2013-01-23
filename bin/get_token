@@ -1,0 +1,2 @@
+#!/bin/bash
+curl --form client_id=$1 --form client_secret=$2 --form grant_type=password --form username=$3 --form password=$4 $5
