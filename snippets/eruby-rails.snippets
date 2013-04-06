@@ -77,9 +77,9 @@ snippet =
 snippet %
 	<% ${1} %>
 snippet each
-	<%= ${1:@p}.each do |${2:p}| %>
+	<% ${1:@p}.each do |${2:p}| %>
 	${3}	
-	<%= end %>
+	<% end -%>
 snippet ife
 	<% if ${1} %>
 	<%= ${2} %>

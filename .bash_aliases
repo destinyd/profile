@@ -7,6 +7,7 @@ alias sv='sudo vim'
 alias r='rails'
 alias fphp='grep -rn --include=*.php '
 alias fnsvn='grep -rn --color --exclude=*.svn-* '
+alias f='grep -rn --color'
 alias mphpscope='find . -type f -name "*.php" > cscope.files &&  cscope -bq'
 alias my='mysql -uroot -p --default-character-set=utf8'
 alias hosts='vim /etc/hosts'
@@ -21,10 +22,12 @@ alias shut='sudo shutdown -P 0'
 #alias nr='sudo service nginx restart'
 alias mongodbr='sudo /etc/rc.d/mongodb restart'
 alias myr='sudo /etc/rc.d/mysqld restart'
-alias nr='sudo /etc/rc.d/nginx restart'
+alias ns='sudo nginx'
+alias nr='sudo pkill nginx; ns'
 alias pr='sudo /etc/rc.d/php-fpm restart'
-alias ss='sudo /etc/rc.d/nginx start ; sudo /etc/rc.d/mysqld start ; sudo /etc/rc.d/mongodb start'
-alias sr='sudo /etc/rc.d/nginx restart ; sudo /etc/rc.d/mysqld restart'
+alias mongodbs='sudo -u mongodb -g daemon /usr/bin/mongod -f /etc/mongodb.conf --fork --logpath /var/log/mongodb/mongod.log'
+alias ss='nr ; sudo -u mysql -g mysql mysqld --console & ; mongodbs '
+alias sr='nr ; sudo /etc/rc.d/mysqld restart'
 alias uc='unicorn_rails -D -c config/unicorn.rb'
 
 export XMODIFIERS="@im=fcitx"
@@ -49,4 +52,4 @@ export RUBY_GC_MALLOC_LIMIT=100000000
 #ruby falcon patch
 
 #git proxy for ssh for github
-export GIT_SSH=/home/dd/bin/socks5proxyssh
+#export GIT_SSH=/home/dd/bin/socks5proxyssh

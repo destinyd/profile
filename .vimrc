@@ -117,6 +117,9 @@ Bundle "Rykka/riv.vim"
 
 "new 
 Bundle "othree/html5.vim"
+"13-03-13
+"Bundle "shougo/neocomplcache"
+Bundle "git://github.com/Shougo/neocomplcache.git"
 
 
 " Bundle 'tpope/vim-unimpaired' " [uu Url encode 等等

@@ -41,7 +41,7 @@ task :install_vundle do
     puts "vundle exist"
   else
     system "git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle"
-    system "vim -c BundleInstall"
+    system "vim +BundleInstall +qall"
     puts "install vundle success"
   end
 end
