@@ -57,7 +57,7 @@ Bundle 'taglist.vim'
 " Bundle 'nelson/cscope_maps'
 " svn git等 通用命令
 " Bundle 'vcscommand.vim'
-Bundle 'vim-scripts/qiushibaike'
+"Bundle 'vim-scripts/qiushibaike'
 Bundle 'jsbeautify'
 "Bundle 'xml.vim'
 Bundle 'auto_mkdir'
@@ -299,6 +299,7 @@ map <C-A-s> :wall<CR>
 map <Leader>tn :tabnew<CR>
 map <Leader>ct :CommandT <CR>
 map <Leader>ss :w !sudo tee % <CR>
+map <Leader>cpc :CoffeeCompile vert<CR><CR>
 
 "外部粘贴
 vmap <C-c> y:call system("xclip -i -selection clipboard", getreg("\""))<CR>:call system("xclip -i", getreg("\""))<CR>
