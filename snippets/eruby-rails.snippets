@@ -1,11 +1,5 @@
 snippet cs
 	<%= collection_select <+object+>, <+method+>, <+collection+>, <+value_method+>, <+text_method+><+, <+[options]+>, <+[html_options]+>+> %>
-snippet ct
-	<%= content_tag '${1:DIV}', ${2:content}${3:,options} -%>
-snippet ctd
-	<%= content_tag '${1:div}'${3:} do -%>
-	  ${2:content}
-	<%= end %>
 snippet ff
 	<% form_for @${1:model} do |f| -%>
 		${2}
@@ -60,8 +54,6 @@ snippet lip
 	<%= link_to "${1:Link text...}", ${2:model}_path(${3:@$2}) %>
 snippet lipp
 	<%= link_to "${1:Link text...}", ${2:model}s_path %>
-snippet lt
-	<%= link_to "${1:name}", ${2:dest} %>
 snippet ofcfs
 	<%= options_from_collection_for_select ${1:collection}, ${2:value_method}, ${3:text_method}, ${4:selected_value} %>
 snippet rf
