@@ -29,6 +29,7 @@ alias mongodbs='sudo -u mongodb -g daemon /usr/bin/mongod -f /etc/mongodb.conf -
 alias ss='nr ; sudo -u mysql -g mysql mysqld --console & ; mongodbs '
 alias sr='nr ; sudo /etc/rc.d/mysqld restart'
 alias uc='unicorn_rails -D -c config/unicorn.rb'
+alias hsk='systemd start phddns.service'
 
 export XMODIFIERS="@im=fcitx"
 export XIM=fcitx
