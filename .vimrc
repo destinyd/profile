@@ -121,6 +121,9 @@ Bundle "othree/html5.vim"
 "Bundle "shougo/neocomplcache"
 Bundle "git://github.com/Shougo/neocomplcache.git"
 
+"scss
+Bundle "cakebaker/scss-syntax.vim"
+
 
 " Bundle 'tpope/vim-unimpaired' " [uu Url encode 等等
 "Bundle "tpope/vim-haml"
