@@ -55,22 +55,14 @@ POWERLINE_HIDE_HOST_NAME="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-<<<<<<< 0c31737983a71f47e4fc62f4bed1d1e8f6d4fddb
-plugins=(git ruby mvn github rvm rails vundle bundler)
-=======
 #plugins=(git)
-plugins=(git ruby mvn github rvm rails3 vundle bundler)
->>>>>>> zshrc
+plugins=(git ruby mvn github rvm rails vundle bundler)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-<<<<<<< 0c31737983a71f47e4fc62f4bed1d1e8f6d4fddb
 #export PATH="/Users/dd/.rvm/gems/ruby-2.0.0-p353/bin:/Users/dd/.rvm/gems/ruby-2.0.0-p353@global/bin:/Users/dd/.rvm/rubies/ruby-2.0.0-p353/bin:/Users/dd/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/Users/dd/.rvm/bin:/Users/dd/.rvm/bin"
-=======
-export PATH="/Users/dd/.rvm/gems/ruby-2.0.0-p353/bin:/Users/dd/.rvm/gems/ruby-2.0.0-p353@global/bin:/Users/dd/.rvm/rubies/ruby-2.0.0-p353/bin:/Users/dd/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/Users/dd/.rvm/bin:/Users/dd/.rvm/bin"
->>>>>>> zshrc
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # # Preferred editor for local and remote sessions
