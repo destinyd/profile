@@ -16,7 +16,7 @@
 [core]
 	editor = vim
         whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
-	excludesfile = /home/dd/.global_ignore
+	excludesfile = /Users/dd/.global_ignore
 	;gitproxy = /home/dd/bin/socks5proxywrapper
 [color]
   ui = auto
