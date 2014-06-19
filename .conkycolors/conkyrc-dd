@@ -153,21 +153,21 @@ ${else}${voffset 4}${color0}${font PizzaDude Bullets:size=12}4${font}${color}${g
 # - WEATHER - #
 ####################
 # http://weather.yahoo.com/
-${voffset -10}${font WenQuanYi Micro Hei:style=Bold:size=12}天气预报 $stippled_hr${font}
-${execi 600 curl -s --connect-timeout 30 "http://m.weather.com.cn/data/101300301.html" >/tmp/forcast }${execi 600 curl -s --connect-timeout 30 "http://wap.weather.com.cn/data/sk/101300301.html" >/tmp/current }
-${voffset 0}${font ConkyWeather:style=Bold:size=18}${color0}${voffset -10}${execi 600 sed  's/^.*"img_title_single":"//' /tmp/forcast | sed 's/",".*$//' | sed 's/大到暴雪/r/;t w-0;s/暴雪/r/;t w-0;s/中到大雪/q/;t w-0;s/大雪/q/;t w-0;s/小到中雪/p/;t w-0;s/中雪/p/;t w-0;s/小雪/o/;t w-0;s/雷雨/l/;t w-0;s/雷阵雨/k/;t w-0;s/大到暴雨/j/;t w-0;s/暴雨/j/;t w-0;s/中到大雨/i/;t w-0;s/大雨/i/;t w-0;s/小到中雨/h/;t w-0;s/中雨/h/;t w-0;s/小雨/s/;t w-0;s/阵雨/g/;t w-0;s/阴/f/;t w-0;s/多云/e/;t w-0;s/雾/u/;t w-0;s/晴/a/;t w-0;s/转//;t w-0;:w-0;'}${color}${font}
-${goto 105}${voffset -15}${font Arrows:style=Bold:size=18}${color0}${voffset -10}${execi 600 sed  's/^.*"WD":"//' /tmp/current | sed 's/",".*$//' | sed 's/无持续风向/v/;t w-0;s/旋转风/v/;t w-0;s/西北风/g/;t w-0;s/西南风/c/;s/东北风/k/;t w-0;s/东南风/o/;t w-0;t w-0;s/南风/a/;t w-0;s/西风/e/;t w-0;s/北风/i/;t w-0;s/东风/m/;t w-0;s/转//;t w-0;:w-0;'}${color}${font}
-${voffset -22}${goto 35}${color2}${execi 600 sed  's/^.*"city":"//' /tmp/current | sed 's/",".*$//' }: ${execi 600 sed  's/^.*"img_title_single":"//' /tmp/forcast | sed 's/",".*$//' } ${alignr 30}湿度：${execi 600 sed  's/^.*"SD":"//' /tmp/current | sed 's/",".*$//' }${color} 
-${voffset 0}${goto 35}${color2}${execi 600 sed  's/^.*"WD":"//' /tmp/current | sed 's/",".*$//' } ${execi 600 sed  's/^.*"WS":"//' /tmp/current | sed 's/",".*$//' } ${alignr 30}${execbar sed  's/^.*"SD":"//' /tmp/current | sed 's/",".*$//'}${color}${font}
-${voffset 5}${color0}${font ConkyWeather:size=24}E${font}${color}
-${voffset -35}${goto 32}${font WenQuanYi Micro Hei:size=8}今日: ${color2}${execi 600 sed  's/^.*"temp":"//' /tmp/current | sed 's/",".*$//' }°C${color} ${alignr 30}早晚：${color2}${execi 600 sed  's/^.*"temp1":"//' /tmp/forcast | sed 's/",".*$//' | sed 's/℃//'| sed 's/℃/°C/' }${color}
-${goto 32}${font WenQuanYi Micro Hei:size=8}明日: ${color1}${execi 600 sed  's/^.*"weather2":"//' /tmp/forcast | sed 's/",".*$//' } ${alignr 30}${execi 600 sed  's/^.*"temp2":"//' /tmp/forcast | sed 's/",".*$//' | sed 's/℃//'| sed 's/℃/°C/'}${color}${font}
-${goto 32}${font WenQuanYi Micro Hei:size=8}后日: ${color1}${execi 600 sed  's/^.*"weather3":"//' /tmp/forcast | sed 's/",".*$//' } ${alignr 30}${execi 600 sed  's/^.*"temp3":"//' /tmp/forcast | sed 's/",".*$//' | sed 's/℃//'| sed 's/℃/°C/' }${color}${font}
+#${voffset -10}${font WenQuanYi Micro Hei:style=Bold:size=12}天气预报 $stippled_hr${font}
+#${execi 600 curl -s --connect-timeout 30 "http://m.weather.com.cn/data/101300301.html" >/tmp/forcast }${execi 600 curl -s --connect-timeout 30 "http://wap.weather.com.cn/data/sk/101300301.html" >/tmp/current }
+#${voffset 0}${font ConkyWeather:style=Bold:size=18}${color0}${voffset -10}${execi 600 sed  's/^.*"img_title_single":"//' /tmp/forcast | sed 's/",".*$//' | sed 's/大到暴雪/r/;t w-0;s/暴雪/r/;t w-0;s/中到大雪/q/;t w-0;s/大雪/q/;t w-0;s/小到中雪/p/;t w-0;s/中雪/p/;t w-0;s/小雪/o/;t w-0;s/雷雨/l/;t w-0;s/雷阵雨/k/;t w-0;s/大到暴雨/j/;t w-0;s/暴雨/j/;t w-0;s/中到大雨/i/;t w-0;s/大雨/i/;t w-0;s/小到中雨/h/;t w-0;s/中雨/h/;t w-0;s/小雨/s/;t w-0;s/阵雨/g/;t w-0;s/阴/f/;t w-0;s/多云/e/;t w-0;s/雾/u/;t w-0;s/晴/a/;t w-0;s/转//;t w-0;:w-0;'}${color}${font}
+#${goto 105}${voffset -15}${font Arrows:style=Bold:size=18}${color0}${voffset -10}${execi 600 sed  's/^.*"WD":"//' /tmp/current | sed 's/",".*$//' | sed 's/无持续风向/v/;t w-0;s/旋转风/v/;t w-0;s/西北风/g/;t w-0;s/西南风/c/;s/东北风/k/;t w-0;s/东南风/o/;t w-0;t w-0;s/南风/a/;t w-0;s/西风/e/;t w-0;s/北风/i/;t w-0;s/东风/m/;t w-0;s/转//;t w-0;:w-0;'}${color}${font}
+#${voffset -22}${goto 35}${color2}${execi 600 sed  's/^.*"city":"//' /tmp/current | sed 's/",".*$//' }: ${execi 600 sed  's/^.*"img_title_single":"//' /tmp/forcast | sed 's/",".*$//' } ${alignr 30}湿度：${execi 600 sed  's/^.*"SD":"//' /tmp/current | sed 's/",".*$//' }${color} 
+#${voffset 0}${goto 35}${color2}${execi 600 sed  's/^.*"WD":"//' /tmp/current | sed 's/",".*$//' } ${execi 600 sed  's/^.*"WS":"//' /tmp/current | sed 's/",".*$//' } ${alignr 30}${execbar sed  's/^.*"SD":"//' /tmp/current | sed 's/",".*$//'}${color}${font}
+#${voffset 5}${color0}${font ConkyWeather:size=24}E${font}${color}
+#${voffset -35}${goto 32}${font WenQuanYi Micro Hei:size=8}今日: ${color2}${execi 600 sed  's/^.*"temp":"//' /tmp/current | sed 's/",".*$//' }°C${color} ${alignr 30}早晚：${color2}${execi 600 sed  's/^.*"temp1":"//' /tmp/forcast | sed 's/",".*$//' | sed 's/℃//'| sed 's/℃/°C/' }${color}
+#${goto 32}${font WenQuanYi Micro Hei:size=8}明日: ${color1}${execi 600 sed  's/^.*"weather2":"//' /tmp/forcast | sed 's/",".*$//' } ${alignr 30}${execi 600 sed  's/^.*"temp2":"//' /tmp/forcast | sed 's/",".*$//' | sed 's/℃//'| sed 's/℃/°C/'}${color}${font}
+#${goto 32}${font WenQuanYi Micro Hei:size=8}后日: ${color1}${execi 600 sed  's/^.*"weather3":"//' /tmp/forcast | sed 's/",".*$//' } ${alignr 30}${execi 600 sed  's/^.*"temp3":"//' /tmp/forcast | sed 's/",".*$//' | sed 's/℃//'| sed 's/℃/°C/' }${color}${font}
 ##############
 #  -   ATI 显卡信息   - #
 ##############
-#${voffset -5}${font WenQuanYi Micro Hei:style=Bold:size=12}显卡 $stippled_hr${font}
-#${color0}${voffset -2}${font Poky:size=17}M${font}${color}${goto 32}${voffset -8}型号:${GOTO -13}${color1}${execi 4 aticonfig --odgt | grep -A 0 'Default Adapter - ' | cut -c18-34} ${font}${color}
-#${color0}${voffset -2}${font Poky:size=17}N${font}${color}${goto 32}${voffset -8}时钟:${GOTO -13}${color1}${execi 4 aticonfig --odgc | grep -A 0 'Current Clocks' | cut -c46-48} MHz${color}
-#${GOTO 110}${voffset -15}核心时钟:${GOTO 160}${color1}${execi 4 aticonfig --odgc | grep -A 0 'Current Clocks' | cut -c32-34} MHz${color}
-#${color0}${voffset -3}${font Poky:size=17}N${font}${color}${goto 32}${voffset -8}GPU 温度:${GOTO 100}${color1}${execi 4 aticonfig --odgt | grep -A 0 'Sensor 0' | cut -c42-46} ºC${font}${color}
+${voffset -5}${font WenQuanYi Micro Hei:style=Bold:size=12}显卡 $stippled_hr${font}
+${color0}${voffset -2}${font Poky:size=17}M${font}${color}${goto 32}${voffset -8}型号:${GOTO -13}${color1}${execi 4 aticonfig --odgt | grep -A 0 'Default Adapter - ' | cut -c18-36} ${font}${color}
+${color0}${voffset -2}${font Poky:size=17}N${font}${color}${goto 32}${voffset -8}时钟:${GOTO -13}${color1}${execi 4 aticonfig --odgc | grep -A 0 'Current Clocks' | cut -c46-48} MHz${color}
+${GOTO 110}${voffset -15}核心时钟:${GOTO 160}${color1}${execi 4 aticonfig --odgc | grep -A 0 'Current Clocks' | cut -c32-34} MHz${color}
+${color0}${voffset -3}${font Poky:size=17}N${font}${color}${goto 32}${voffset -8}GPU 温度:${GOTO 100}${color1}${execi 4 aticonfig --odgt | grep -A 0 'Sensor 0' | cut -c42-46} ºC${font}${color}

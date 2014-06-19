@@ -16,7 +16,7 @@ alias ar='sudo service apache2 restart'
 alias update='sudo apt-get update'
 alias upgrade='sudo apt-get upgrade'
 alias ai='sudo apt-get install'
-alias dfree='du -sk'
+alias dfree='du -skh'
 alias shut='sudo shutdown -P 0'
 
 #alias nr='sudo service nginx restart'
@@ -27,10 +27,12 @@ alias nr='sudo pkill nginx; ns'
 alias pr='sudo pkill php-fpm; sudo php-fpm'
 alias mongodbs='sudo -u mongodb -g daemon /usr/bin/mongod -f /etc/mongodb.conf --fork --logpath /var/log/mongodb/mongod.log'
 #alias ss='nr ; sudo -u mysql -g mysql mysqld --console & ; mongodbs '
+alias mr='sudo -u mysql -g mysql mysqld --console &'
 alias ss='nr ; mongodbs '
 alias sr='nr ; sudo /etc/rc.d/mysqld restart'
 alias uc='unicorn_rails -D -c config/unicorn.rb'
 alias hsk='systemd start phddns.service'
+alias killqq='ps aux | grep C: | awk "{print \$2}" | xargs kill -9'
 
 export XMODIFIERS="@im=fcitx"
 export XIM=fcitx
@@ -46,12 +48,15 @@ export GREP_OPTIONS="--exclude-dir=\.svn"
 export SVN_EDITOR=vim
 
 #ruby falcon patch
-export RUBY_HEAP_MIN_SLOTS=1000000
-export RUBY_HEAP_FREE_MIN=500000
-export RUBY_HEAP_SLOTS_INCREMENT=1000000
-export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
-export RUBY_GC_MALLOC_LIMIT=100000000
+#export RUBY_HEAP_MIN_SLOTS=1000000
+#export RUBY_HEAP_FREE_MIN=500000
+#export RUBY_HEAP_SLOTS_INCREMENT=1000000
+#export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
+#export RUBY_GC_MALLOC_LIMIT=100000000
 #ruby falcon patch
 
 #git proxy for ssh for github
 #export GIT_SSH=/home/dd/bin/socks5proxyssh
+#
+export EDITOR="vim"
+export M2_HOME="/opt/maven"

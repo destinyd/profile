@@ -19,8 +19,13 @@ Bundle 'gmarik/vundle'
 
 
 "html to text
-Bundle 'plasticboy/vim-markdown'
-
+"Bundle 'plasticboy/vim-markdown'
+Bundle 'tpope/vim-markdown'
+"markdown preview
+"Bundle 'suan/vim-instant-markdown'
+Bundle 'greyblake/vim-preview'
+"访问
+:nmap <Leader>\ :Preview<CR>
 
 " My Bundles here:
 "
@@ -36,7 +41,7 @@ Bundle 'L9'
 "Bundle 'FuzzyFinder'
 "Bundle "tpope/vim-cucumber"
 Bundle "tpope/vim-rails"
-Bundle "taq/vim-rspec"
+"Bundle "taq/vim-rspec"
 " non github repos
 " Bundle 'git://git.wincent.com/command-t.git'
 " snipMate 
@@ -48,7 +53,7 @@ Bundle 'AutoComplPop'
 " 剪贴板
 " Bundle 'fakeclip'
 "cs cst ds 两旁添加符号
-Bundle 'tpope/vim-surround' 
+"Bundle 'tpope/vim-surround' 
 " DirBrowser
 "Bundle 'scrooloose/nerdtree'
 "Bundle 'FindInNERDTree'
@@ -70,7 +75,7 @@ Bundle 'AuthorInfo'
 " ,cc ,cu ,c<space>
 Bundle 'scrooloose/nerdcommenter'
 "命令行 ConqueTeam
-Bundle 'rson/vim-conque' 
+"Bundle 'rson/vim-conque' 
 " 自己设的,ct 
 Bundle 'wincent/Command-T'
 "tab 完成
@@ -80,9 +85,10 @@ Bundle 'vim-scripts/ZoomWin'
 " 结束def end填充
 Bundle 'tpope/vim-endwise' 
 " 检查错误
-Bundle "scrooloose/syntastic" 
+"Bundle "scrooloose/syntastic" 
 " 重构工具
-Bundle "ecomba/vim-ruby-refactoring" 
+" 两年前了
+"Bundle "ecomba/vim-ruby-refactoring" 
 "不成熟
 "Bundle "danchoi/ri_vim"
 
@@ -131,25 +137,16 @@ Bundle "cakebaker/scss-syntax.vim"
 "Bundle "rubycomplete.vim"
 "Bundle "Townk/vim-autoclose"
 "Bundle "vim-scripts/taglist.vim"
+"
+"2014-02-25
+"git 差异对比
+"Bundle "airblade/vim-gitgutter"
+Bundle "vim-ruby/vim-ruby"
+Bundle "tpope/vim-rvm"
+"代码检查
+"Bundle "scrooloose/syntastic"
 
 filetype plugin indent on     " required! 
-"
-" Brief help
-"
-" :BundleInstall  - install bundles (won't update installed)
-" :BundleInstall! - update if installed
-"
-" :Bundles foo    - search for foo
-" :Bundles! foo   - refresh cached list and search for foo
-"
-" :BundleClean    - confirm removal of unused bundles
-" :BundleClean!   - remove without confirmation
-"
-" see :h vundle for more details
-" or wiki for FAQ
-" Note: comments after Bundle command are not allowed..
-
-" Enable syntax highlight
 syntax enable
 
 " Show line number
@@ -247,7 +244,8 @@ set wildignore+=public/images,public/system,data,images
 
 " Enable syntastic syntax checking
 let g:syntastic_enable_signs=1
-let g:syntastic_quiet_warnings=1
+"let g:syntastic_quiet_warnings=1
+let g:syntastic_quiet_messages = {'level': 'warnings'}
 let g:vimrc_author='Killua DestinyD' 
 let g:vimrc_email='destinyd.war@gmail.com' 
 let g:vimrc_homepage='' 
