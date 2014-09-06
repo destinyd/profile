@@ -16,6 +16,7 @@ ZSH_THEME="powerline"
 POWERLINE_NO_BLANK_LINE="true"
 POWERLINE_SHOW_GIT_ON_RIGHT="true"
 POWERLINE_DETECT_SSH="true"
+POWERLINE_HIDE_HOST_NAME="true"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
