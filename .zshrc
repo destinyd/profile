@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh configuration.
-ZSH=/usr/share/oh-my-zsh/
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -48,8 +48,9 @@ plugins=(git ruby mvn github rvm rails vundle bundler)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
+#export PATH="/usr/local/heroku/bin:/home/dd/bin:/home/dd/.nvm/v0.10.29/bin:/home/dd/.rvm/gems/ruby-2.1.2/bin:/home/dd/.rvm/gems/ruby-2.1.2@global/bin:/home/dd/.rvm/rubies/ruby-2.1.2/bin:/usr/local/heroku/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/opt/android-ndk:/opt/android-sdk/platform-tools:/opt/android-sdk/tools:/usr/share/java/gradle/bin:/opt/kde/bin:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/dd/.rvm/bin:/home/dd/bin/FDK/Tools/linux:/home/dd/bin/FDK/Tools/linux:/opt/src/go/bin:/home/dd/.rvm/bin:/home/dd/bin/FDK/Tools/linux:/home/dd/bin/FDK/Tools/linux:/home/dd/.rvm/bin"
 
 [[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
 [[ -f ~/.bash_profile ]] && . ~/.bash_profile
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

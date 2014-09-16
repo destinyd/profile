@@ -33,6 +33,7 @@ alias sr='nr ; sudo /etc/rc.d/mysqld restart'
 alias uc='unicorn_rails -D -c config/unicorn.rb'
 alias hsk='systemd start phddns.service'
 alias killqq='ps aux | grep C: | awk "{print \$2}" | xargs kill -9'
+alias node='node --harmony'
 
 export XMODIFIERS="@im=fcitx"
 export XIM=fcitx
@@ -40,9 +41,12 @@ export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XIM_PROGRAM=fcitx
 
+export GOPATH=/opt/src/go
+
 if [ -d ~/bin ] ; then
   PATH=~/bin:"${PATH}"
 fi
+PATH=$PATH:$GOPATH/bin
 export PATH
 export GREP_OPTIONS="--exclude-dir=\.svn"
 export SVN_EDITOR=vim
