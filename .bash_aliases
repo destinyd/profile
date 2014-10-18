@@ -59,4 +59,4 @@ export SVN_EDITOR=vim
 #export GIT_SSH=/home/dd/bin/socks5proxyssh
 #
 export EDITOR="vim"
-export M2_HOME="/opt/maven"
+export M2_HOME="/usr/local/Cellar/maven/3.2.3/libexec"
