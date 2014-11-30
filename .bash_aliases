@@ -44,7 +44,7 @@ export XIM_PROGRAM=fcitx
 export GOPATH=/opt/src/go
 
 if [ -d ~/bin ] ; then
-  PATH=~/bin:"${PATH}"
+  PATH="${PATH}":~/bin
 fi
 PATH=$PATH:$GOPATH/bin
 export PATH
