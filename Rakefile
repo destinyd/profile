@@ -49,10 +49,10 @@ end
 
 task :snippets do
   begin
-    FileUtils.mv "#{HOMEPATH}/.vim/bundle/snipMate/snippets","#{HOMEPATH}/.vim/bundle/snipMate/snippets.#{NOW}.bak"
+    FileUtils.mv "#{HOMEPATH}/.vim/bundle/vim-snippets/snippets","#{HOMEPATH}/.vim/bundle/vim-snippets/snippets.#{NOW}.bak"
   rescue
   end 
-  FileUtils.ln_s PROFILE_PATH + '/snippets', HOMEPATH + '/.vim/bundle/snipMate/snippets'
+  FileUtils.ln_s PROFILE_PATH + '/snippets', HOMEPATH + '/.vim/bundle/vim-snippets/snippets'
   puts "cp snippets success"
 end
 
