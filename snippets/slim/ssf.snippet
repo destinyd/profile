@@ -1,0 +1,8 @@
+= simple_form_for ${1:@objects} do |f|
+  = render 'shared/error_messages', object: f.object
+
+  .form-inputs
+    ${2}
+
+  .form-actions
+    = f.button :submit, class: 'btn btn-primary'
