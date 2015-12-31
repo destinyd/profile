@@ -30,9 +30,12 @@ alias mongodbs='sudo -u mongodb -g daemon /usr/bin/mongod -f /etc/mongodb.conf -
 alias mr='sudo -u mysql -g mysql mysqld --console &'
 alias ss='nr ; mongodbs '
 alias sr='nr ; sudo /etc/rc.d/mysqld restart'
+alias pgs='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
+alias pgr='pg_ctl -D /usr/local/var/postgres stop -s -m fast ; pgs'
 alias uc='unicorn_rails -D -c config/unicorn.rb'
 alias hsk='systemd start phddns.service'
 alias killqq='ps aux | grep C: | awk "{print \$2}" | xargs kill -9'
+alias flushdns='sudo killall -HUP mDNSResponder'
 
 export XMODIFIERS="@im=fcitx"
 export XIM=fcitx
@@ -40,9 +43,12 @@ export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XIM_PROGRAM=fcitx
 
+export GOPATH=/opt/src/go
+
 if [ -d ~/bin ] ; then
-  PATH=~/bin:"${PATH}"
+  PATH="${PATH}":~/bin
 fi
+PATH=$PATH:$GOPATH/bin
 export PATH
 export GREP_OPTIONS="--exclude-dir=\.svn"
 export SVN_EDITOR=vim

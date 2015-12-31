@@ -45,7 +45,16 @@ Bundle "tpope/vim-rails"
 " non github repos
 " Bundle 'git://git.wincent.com/command-t.git'
 " snipMate 
-Bundle 'vim-scripts/snipMate'
+"Bundle 'vim-scripts/snipMate'
+
+" 替代
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'tomtom/tlib_vim'
+Bundle 'garbas/vim-snipmate'
+
+" Optional:
+Bundle 'honza/vim-snippets'
+
 " ...
 " other need
 Bundle 'AutoComplPop'
@@ -116,7 +125,7 @@ Bundle "tpope/vim-rake"
 Bundle "briancollins/vim-jst"
 
 "thor 脚本
-Bundle "jc00ke/thor.vim"
+"Bundle "jc00ke/thor.vim"
 
 "Riv: reStructuredText in Vim
 Bundle "Rykka/riv.vim"
@@ -145,6 +154,9 @@ Bundle "vim-ruby/vim-ruby"
 Bundle "tpope/vim-rvm"
 "代码检查
 "Bundle "scrooloose/syntastic"
+
+"ruby moiton
+Bundle "rcyrus/snipmate-snippets-rubymotion"
 
 filetype plugin indent on     " required! 
 syntax enable
@@ -309,11 +321,14 @@ nmap <C-v> :call setreg("\"",system("xclip -o -selection clipboard"))<CR>p
 " ctrlp
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+set wildignore+=*/log/*,*/public/assets/*,*/node_modules/*
+set wildignore+=_www/* " jekyll
+set wildignore+=dist/* " node
 
 "let g:ctrlp_custom_ignore = '\v[\/](\.git|\.hg|\.svn)$'
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.git|\.hg|\.svn)$',
-  \ 'file': '\.exe$\|\.so$\|\.dll$',
+  \ 'dir':  '\v[\/](\.git|\.hg|\.svn|dist|\_www)$',
+  \ 'file': '\.exe$\|\.so$\|\.dll|\.je?pg|\.png|\.gif$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
 
@@ -341,3 +356,6 @@ autocmd InsertLeave * call Fcitx2en()
 "进入插入模式
 autocmd InsertEnter * call Fcitx2zh()
 "##### auto fcitx end ######
+"
+" 修复slim识别错误BUG
+autocmd BufNewFile,BufRead *.slim set ft=slim
