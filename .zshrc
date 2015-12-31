@@ -47,6 +47,24 @@ plugins=(git ruby mvn github rvm rails vundle bundler)
 
 source $ZSH/oh-my-zsh.sh
 
+# User configuration
+
+#export PATH="/Users/dd/.rvm/gems/ruby-2.0.0-p353/bin:/Users/dd/.rvm/gems/ruby-2.0.0-p353@global/bin:/Users/dd/.rvm/rubies/ruby-2.0.0-p353/bin:/Users/dd/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/Users/dd/.rvm/bin:/Users/dd/.rvm/bin"
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# # Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# ssh
+# export SSH_KEY_PATH="~/.ssh/dsa_id"
+
 # Customize to your needs...
 #export PATH="/usr/local/heroku/bin:/home/dd/bin:/home/dd/.nvm/v0.10.29/bin:/home/dd/.rvm/gems/ruby-2.1.2/bin:/home/dd/.rvm/gems/ruby-2.1.2@global/bin:/home/dd/.rvm/rubies/ruby-2.1.2/bin:/usr/local/heroku/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/opt/android-ndk:/opt/android-sdk/platform-tools:/opt/android-sdk/tools:/usr/share/java/gradle/bin:/opt/kde/bin:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/dd/.rvm/bin:/home/dd/bin/FDK/Tools/linux:/home/dd/bin/FDK/Tools/linux:/opt/src/go/bin:/home/dd/.rvm/bin:/home/dd/bin/FDK/Tools/linux:/home/dd/bin/FDK/Tools/linux:/home/dd/.rvm/bin"
 
