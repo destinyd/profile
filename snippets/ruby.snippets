@@ -727,7 +727,7 @@ snippet shared
 snippet ibl
 	it_behaves_like ${0:'shared examples name'}
 snippet it
-	it '${1:spec_name}' do
+	it "${1:spec_name}" do
 		${0}
 	end
 snippet its
@@ -744,3 +744,18 @@ snippet iiexp
 	it { is_expected.to ${0} }
 snippet iiexpn
 	it { is_expected.not_to ${0} }
+snippet rsd
+	it { should validate_presence_of :${1} }
+
+	it "属性" do
+	  ${3:@$2} = create(:${2:obj})
+	  expect(${4:$3}.respond_to?(:${5:method})).to be true
+	end
+
+	it "关系" do
+	  ${7:$3} = create(:${6:$2})
+	  expect(${8:$3}.respond_to?(:${9:method})).to be true
+	end
+
+	describe "方法" do
+	end
