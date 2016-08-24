@@ -158,6 +158,12 @@ Bundle "tpope/vim-rvm"
 "ruby moiton
 Bundle "rcyrus/snipmate-snippets-rubymotion"
 
+" cjsx
+Bundle "mtscout6/vim-cjsx"
+
+" slim
+Bundle "slim-template/vim-slim"
+
 filetype plugin indent on     " required! 
 syntax enable
 
