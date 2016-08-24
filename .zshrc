@@ -85,3 +85,6 @@ source $ZSH/oh-my-zsh.sh
 [[ -f ~/.bash_profile ]] && . ~/.bash_profile
 
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+export NVM_DIR=~/.nvm
+. $(brew --prefix nvm)/nvm.sh
