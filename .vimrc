@@ -6,163 +6,159 @@ let $Lang="zh_CN.UTF-8"
 let g:snips_author = "Killua.DD"
 filetype off                   " required!
 
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#rc()
 
 " let Vundle manage Vundle
 " required! 
-Bundle 'gmarik/vundle'
+Plugin 'VundleVim/vundle.vim'
 
 "系统类的
-"文件操作
-"Bundle 'tpope/vim-eunuch'
-
+"文件操作, 可能要注意安全
+Plugin 'tpope/vim-eunuch'
 
 "html to text
-"Bundle 'plasticboy/vim-markdown'
-Bundle 'tpope/vim-markdown'
+" 基本没用上
+"Plugin 'tpope/vim-markdown'
 "markdown preview
-"Bundle 'suan/vim-instant-markdown'
-Bundle 'greyblake/vim-preview'
+"Plugin 'greyblake/vim-preview'
 "访问
-:nmap <Leader>\ :Preview<CR>
+":nmap <Leader>\ :Preview<CR>
 
 " My Bundles here:
 "
 " original repos on github
 " Gcommit...  git
-Bundle 'tpope/vim-fugitive'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+Plugin 'tpope/vim-fugitive'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " be bs bv buffer理打开过去文件
-Bundle 'bufexplorer.zip' 
+Plugin 'bufexplorer.zip' 
 " vim-scripts repos
-Bundle 'L9'
-"Bundle 'FuzzyFinder'
-"Bundle "tpope/vim-cucumber"
-Bundle "tpope/vim-rails"
-"Bundle "taq/vim-rspec"
+Plugin 'L9'
+"Plugin 'FuzzyFinder'
+"Plugin 'tpope/vim-cucumber'
+Plugin 'tpope/vim-rails'
+"Plugin 'taq/vim-rspec'
 " non github repos
-" Bundle 'git://git.wincent.com/command-t.git'
+" Plugin 'git://git.wincent.com/command-t.git'
 " snipMate 
-"Bundle 'vim-scripts/snipMate'
+"Plugin 'vim-scripts/snipMate'
 
-" 替代
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tomtom/tlib_vim'
-Bundle 'garbas/vim-snipmate'
+" 替代 snipmate
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
 
 " Optional:
-Bundle 'honza/vim-snippets'
+Plugin 'honza/vim-snippets'
 
 " ...
-" other need
-Bundle 'AutoComplPop'
-" Bundle 'NeoComplCache'
+" other need 自动弹出菜单？ 太老
+"Plugin 'AutoComplPop'
+" Plugin 'NeoComplCache'
 " 剪贴板
-" Bundle 'fakeclip'
+" Plugin 'fakeclip'
 "cs cst ds 两旁添加符号
-"Bundle 'tpope/vim-surround' 
+"Plugin 'tpope/vim-surround'
 " DirBrowser
-"Bundle 'scrooloose/nerdtree'
-"Bundle 'FindInNERDTree'
-" Bundle 'The-NERD-Commenter'
-Bundle 'taglist.vim'
-" Bundle 'nelson/cscope_maps'
+"Plugin 'scrooloose/nerdtree'
+"Plugin 'FindInNERDTree'
+" Plugin 'The-NERD-Commenter'
+Plugin 'taglist.vim'
+" Plugin 'nelson/cscope_maps'
 " svn git等 通用命令
-" Bundle 'vcscommand.vim'
-"Bundle 'vim-scripts/qiushibaike'
-Bundle 'jsbeautify'
-"Bundle 'xml.vim'
-Bundle 'auto_mkdir'
-Bundle 'Align'
-" 取消？
-"Bundle 'serverhorror/javascript.vim'
+" Plugin 'vcscommand.vim'
+"Plugin 'vim-scripts/qiushibaike'
+" js 缩进？太老
+"Plugin 'jsbeautify'
+"Plugin 'xml.vim'
+Plugin 'auto_mkdir'
+" 自动缩进排序什么的 (=?) 不太懂具体设置
+Plugin 'Align'
 " % 可以跳html标签
-Bundle 'matchit.zip' 
-Bundle 'AuthorInfo'
-" ,cc ,cu ,c<space>
-Bundle 'scrooloose/nerdcommenter'
+Plugin 'matchit.zip' 
+" 改为 F6
+Plugin 'AuthorInfo'
+" ,cc ,cu ,c<space> 注释
+Plugin 'scrooloose/nerdcommenter'
 "命令行 ConqueTeam
-"Bundle 'rson/vim-conque' 
-" 自己设的,ct 
-Bundle 'wincent/Command-T'
+"Plugin 'rson/vim-conque' 
+" 自己设的,ct h和ctrlp同类
+"Plugin 'wincent/Command-T'
 "tab 完成
-" Bundle 'ervandew/supertab' 
+" Plugin 'ervandew/supertab' 
 " c-w o 全屏  自己,,
-Bundle 'vim-scripts/ZoomWin' 
+Plugin 'vim-scripts/ZoomWin' 
 " 结束def end填充
-Bundle 'tpope/vim-endwise' 
+Plugin 'tpope/vim-endwise' 
 " 检查错误
-"Bundle "scrooloose/syntastic" 
+"Plugin 'scrooloose/syntastic'
 " 重构工具
 " 两年前了
-"Bundle "ecomba/vim-ruby-refactoring" 
-"不成熟
-"Bundle "danchoi/ri_vim"
-
-Bundle "kchmck/vim-coffee-script"
-"grep in vim 比较老"
-Bundle "grep.vim"
+"Plugin 'ecomba/vim-ruby-refactoring'
 
 " cool status bar
-Bundle "Lokaltog/vim-powerline"
-"let g:Powerline_symbols = 'fancy'
-set t_Co=256
+Plugin 'lokaltog/vim-powerline'
 
-Bundle "kien/ctrlp.vim"
+" 快速查找文件,如commentT
+Plugin 'ctrlpvim/ctrlp.vim'
 
 " ' " 闭合
-Bundle "Raimondi/delimitMate"
-"tpope 专场
-Bundle "tpope/vim-unimpaired"
+Plugin 'raimondi/delimitmate'
 
+"tpope 专场
+Plugin 'tpope/vim-unimpaired'
 " rails
-Bundle "tpope/vim-bundler"
-Bundle "tpope/vim-rake"
+" guard代替了
+"Plugin 'tpope/vim-bundler'
+Plugin 'tpope/vim-rake'
 "eruby highlight 和snip % 之类冲突
-"Bundle "banyan/eruby.vim"
-Bundle "briancollins/vim-jst"
+"Plugin 'banyan/eruby.vim'
+"tpope 专场 end
 
 "thor 脚本
-"Bundle "jc00ke/thor.vim"
-
-"Riv: reStructuredText in Vim
-Bundle "Rykka/riv.vim"
+"Plugin 'jc00ke/thor.vim'
 
 "new 
-Bundle "othree/html5.vim"
+Plugin 'othree/html5.vim'
+
 "13-03-13
-"Bundle "shougo/neocomplcache"
-Bundle "git://github.com/Shougo/neocomplcache.git"
+" 自动补齐、填充
+Plugin 'shougo/neocomplcache'
 
 "scss
-Bundle "cakebaker/scss-syntax.vim"
+Plugin 'cakebaker/scss-syntax.vim'
 
-
-" Bundle 'tpope/vim-unimpaired' " [uu Url encode 等等
-"Bundle "tpope/vim-haml"
-"Bundle "rails.vim"
-"Bundle "rubycomplete.vim"
-"Bundle "Townk/vim-autoclose"
-"Bundle "vim-scripts/taglist.vim"
-"
 "2014-02-25
 "git 差异对比
-"Bundle "airblade/vim-gitgutter"
-Bundle "vim-ruby/vim-ruby"
-Bundle "tpope/vim-rvm"
+"Plugin 'airblade/vim-gitgutter'
+Plugin 'vim-ruby/vim-ruby'
 "代码检查
-"Bundle "scrooloose/syntastic"
+"Plugin 'scrooloose/syntastic'
 
-"ruby moiton
-Bundle "rcyrus/snipmate-snippets-rubymotion"
+"ruby motion暂时不用
+"Plugin 'rcyrus/snipmate-snippets-rubymotion'
 
+" javascript
+" vim-jst需求
+Plugin 'pangloss/vim-javascript'
+" jst/ejs高亮缩进 rails js模板 js erb
+"Plugin 'briancollins/vim-jst'
+Plugin 'isRuslan/vim-es6'
+
+" coffeescript
+Plugin 'kchmck/vim-coffee-script'
 " cjsx
-Bundle "mtscout6/vim-cjsx"
+Plugin 'mtscout6/vim-cjsx'
+" coffeescript end
+" javascript end
 
 " slim
-Bundle "slim-template/vim-slim"
+Plugin 'slim-template/vim-slim'
+
+" wechat
+Plugin 'chemzqm/wxapp.vim'
 
 filetype plugin indent on     " required! 
 syntax enable
@@ -296,7 +292,6 @@ map <C-l> <C-W>l
 
 map <Leader><Leader> :ZoomWin<CR>
 map <C-\> :tnext<CR>
-"map <C-p> :Ctrlp<CR>
 
 map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 " Unimpaired configuration
@@ -316,7 +311,7 @@ nmap <C-s> :w<CR>
 map <C-A-s> :wall<CR>
 " 我
 map <Leader>tn :tabnew<CR>
-map <Leader>ct :CommandT <CR>
+"map <Leader>ct :CommandT <CR>
 map <Leader>ss :w !sudo tee % <CR>
 map <Leader>cpc :CoffeeCompile vert<CR><CR>
 
@@ -324,7 +319,10 @@ map <Leader>cpc :CoffeeCompile vert<CR><CR>
 vmap <C-c> y:call system("xclip -i -selection clipboard", getreg("\""))<CR>:call system("xclip -i", getreg("\""))<CR>
 nmap <C-v> :call setreg("\"",system("xclip -o -selection clipboard"))<CR>p
 
-" ctrlp
+" ctrlp start
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 set wildignore+=*/log/*,*/public/assets/*,*/node_modules/*
@@ -337,6 +335,8 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\.exe$\|\.so$\|\.dll|\.je?pg|\.png|\.gif$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
+
+" ctrlp end
 
 "##### auto fcitx  ###########
 let g:input_toggle = 1
@@ -365,3 +365,27 @@ autocmd InsertEnter * call Fcitx2zh()
 "
 " 修复slim识别错误BUG
 autocmd BufNewFile,BufRead *.slim set ft=slim
+
+" easymotion
+"
+" <Leader>f{char} to move to {char}
+map  <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
+
+" s{char}{char} to move to {char}{char}
+nmap s <Plug>(easymotion-overwin-f2)
+
+" Move to line
+map <Leader>L <Plug>(easymotion-bd-jk)
+nmap <Leader>L <Plug>(easymotion-overwin-line)
+
+" Move to word
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
+"
+" easymotion end
+
+" powerline start
+"let g:Powerline_symbols = 'fancy'
+set t_Co=256
+" powerline end

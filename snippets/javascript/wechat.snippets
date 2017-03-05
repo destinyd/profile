@@ -1,0 +1,27 @@
+snippet req
+	wx.request({
+	  url: ${1:url},
+	  data: {
+	    ${2}
+	  },
+	  success: function(res){
+	    console.log("success")
+	    ${3}
+	  },
+	  fail: function(res){
+	    console.warn("fail")
+	    ${4}
+	  }
+	})
+snippet page
+	Page({
+	  data: {
+	    ${1:state: "loading"}
+	  },
+	  onLoad: function() {
+	    ${2:console.log("onLoad")}
+	  },
+	  onReady: function() {
+	    ${3:console.log("onReady")}
+	  }	
+	})

@@ -51,7 +51,6 @@ if [ -d ~/bin ] ; then
 fi
 PATH=$PATH:$GOPATH/bin
 export PATH
-export GREP_OPTIONS="--exclude-dir=\.svn"
 export SVN_EDITOR=vim
 
 #ruby falcon patch
