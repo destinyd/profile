@@ -1,8 +1,10 @@
 snippet rec
-	${1}${2: =} React.createClass
+	${1:@foo =} React.createClass
 		render: ->
-			${3:<div />}
-snippet onkeyup
+			${2:<div />}
+snippet onku
 	onKeyUp={${1:@func}}
-snippet onclick
+snippet onkd
+	onKeyDown={${1:@func}}
+snippet onc
 	onClick={${1:@func}}

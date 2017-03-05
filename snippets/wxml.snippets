@@ -1,0 +1,63 @@
+snippet .
+	class="${0}"
+snippet bi
+	bindinput="${0}"
+snippet if
+	wx:if="{{${0}}}"
+snippet for
+	wx:for="{{${0}}}"
+snippet fori
+	wx:for="{{${1}}}" wx:for-item="{{${2:item}}}" wx:for-index="{{${3:index}}}"  wx:key="unique"
+snippet bl
+	<block>
+	  ${0}
+	</block>
+snippet blif
+	<block wx:if="{{${1:true}}}">
+	  ${2}
+	</block>
+snippet blife
+	<block wx:if="{{${1:true}}}">
+	  ${2}
+	</block>
+	<block hidden="{{${3:$1}}}">
+	  ${4}
+	</block>
+snippet blfor
+	<block wx:for="{{${1}}}" wx:for-item="${2:item}" wx:for-index="${3:index}" wx:key="unique">
+	  ${4}
+	</block>
+snippet view
+	<view>
+	  ${0}
+	</view>
+snippet viewc
+	<view class="${1}">
+	  ${2}
+	</view>
+snippet view.
+	<view class="${1}">
+	  ${2}
+	</view>
+snippet viewife
+	<view wx:if="{{${1:foo}}}">
+	  ${2}
+	</view>
+	<view wx:elif="{{${3:bar}}}">
+	  ${4}
+	</view>
+	<view wx:else>
+	  ${5}
+	</view>
+snippet viewfor
+	<view wx:for="{{${1}}}" wx:for-item="${2:item}" wx:for-index="${3:index}" wx:key="unique">
+	  ${4}
+	</view>
+snippet nav
+	<navigator url="${1}">
+	  ${2}
+	</navigator>
+snippet btn
+	<button class="${1}" type="${2:primay/default/warn}">
+	  ${3}
+	</button>
