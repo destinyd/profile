@@ -20,7 +20,7 @@ snippet blife
 	<block wx:if="{{${1:true}}}">
 	  ${2}
 	</block>
-	<block hidden="{{${3:$1}}}">
+	<block wx:if="{{!${3:$1}}}">
 	  ${4}
 	</block>
 snippet blfor
