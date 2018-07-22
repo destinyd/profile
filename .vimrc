@@ -1,9 +1,13 @@
 set nocompatible               " be iMproved
-set fileencodings=utf-8,gbk,default,ucs-bom,latin1
-set guifontset=-dt-interface
 set encoding=utf-8
+set termencoding=utf-8
+set fileencodings=utf-8,gbk,default,ucs-bom,cp936,gb18030,big5,latin1
+"set fileencodings=ucs-bom,utf-8,chinese,cp936,latin1
+"set fileencodings=utf-8,gbk,latin1
+set guifontset=-dt-interface
+"set fencs=utf8,gbk,gb2312,gb18030
 let $Lang="zh_CN.UTF-8"
-let g:snips_author = "Killua.DD"
+let g:snips_author = "DestinyD"
 filetype off                   " required!
 
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -42,25 +46,37 @@ Plugin 'tpope/vim-rails'
 "Plugin 'taq/vim-rspec'
 " non github repos
 " Plugin 'git://git.wincent.com/command-t.git'
+" 自己设的,ct h和ctrlp同类
+"Plugin 'wincent/Command-T'
+" 快速查找文件,如commentT
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'lokikl/vim-ctrlp-ag'
 " snipMate 
 "Plugin 'vim-scripts/snipMate'
 
 " 替代 snipmate
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate'
+"Plugin 'MarcWeber/vim-addon-mw-utils'
+"Plugin 'tomtom/tlib_vim'
+" 需要切换到tlib_fix分支
+"Plugin 'garbas/vim-snipmate'
+
+" 替代snipmate
+Plugin 'sirver/ultisnips'
 
 " Optional:
 Plugin 'honza/vim-snippets'
 
+" 自动填充
+Plugin 'Valloric/YouCompleteMe'
+
 " ...
-" other need 自动弹出菜单？ 太老
+" other need 自动弹出菜单？ 太老, 补充导致BUG
 "Plugin 'AutoComplPop'
 " Plugin 'NeoComplCache'
 " 剪贴板
 " Plugin 'fakeclip'
 "cs cst ds 两旁添加符号
-"Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-surround'
 " DirBrowser
 "Plugin 'scrooloose/nerdtree'
 "Plugin 'FindInNERDTree'
@@ -78,14 +94,26 @@ Plugin 'auto_mkdir'
 Plugin 'Align'
 " % 可以跳html标签
 Plugin 'matchit.zip' 
+" Jade语法的编写HTML div>p#foo$*3>a  <c-y>
+" <div>
+  " <p id="foo1">
+        "<a href=""></a>
+    "</p>
+    "<p id="foo2">
+        "<a href=""></a>
+    "</p>
+    "<p id="foo3">
+        "<a href=""></a>
+    "</p>
+"</div>
+Plugin 'mattn/emmet-vim'
+
 " 改为 F6
 Plugin 'AuthorInfo'
 " ,cc ,cu ,c<space> 注释
 Plugin 'scrooloose/nerdcommenter'
 "命令行 ConqueTeam
 "Plugin 'rson/vim-conque' 
-" 自己设的,ct h和ctrlp同类
-"Plugin 'wincent/Command-T'
 "tab 完成
 " Plugin 'ervandew/supertab' 
 " c-w o 全屏  自己,,
@@ -100,9 +128,6 @@ Plugin 'tpope/vim-endwise'
 
 " cool status bar
 Plugin 'lokaltog/vim-powerline'
-
-" 快速查找文件,如commentT
-Plugin 'ctrlpvim/ctrlp.vim'
 
 " ' " 闭合
 Plugin 'raimondi/delimitmate'
@@ -127,12 +152,32 @@ Plugin 'othree/html5.vim'
 " 自动补齐、填充
 Plugin 'shougo/neocomplcache'
 
+" 前端 start
+" css
+Plugin 'hail2u/vim-css3-syntax'
 "scss
 Plugin 'cakebaker/scss-syntax.vim'
 
-"2014-02-25
-"git 差异对比
-"Plugin 'airblade/vim-gitgutter'
+"   javascript start
+"   vim-jst需求
+Plugin 'pangloss/vim-javascript'
+"   jst/ejs高亮缩进 rails js模板 js erb
+"Plugin 'briancollins/vim-jst'
+Plugin 'isRuslan/vim-es6'
+
+"   jsx
+Plugin 'mxw/vim-jsx'
+
+Plugin 'marijnh/tern_for_vim'
+
+"   wechat
+"Plugin 'chemzqm/wxapp.vim'
+"   javascript end
+" 前端 end
+
+
+" ruby start
+Plugin 'chase/vim-ansible-yaml'
 Plugin 'vim-ruby/vim-ruby'
 "代码检查
 "Plugin 'scrooloose/syntastic'
@@ -140,25 +185,24 @@ Plugin 'vim-ruby/vim-ruby'
 "ruby motion暂时不用
 "Plugin 'rcyrus/snipmate-snippets-rubymotion'
 
-" javascript
-" vim-jst需求
-Plugin 'pangloss/vim-javascript'
-" jst/ejs高亮缩进 rails js模板 js erb
-"Plugin 'briancollins/vim-jst'
-Plugin 'isRuslan/vim-es6'
-
-" coffeescript
-Plugin 'kchmck/vim-coffee-script'
+"   coffeescript start
+"Plugin 'kchmck/vim-coffee-script'
 " cjsx
-Plugin 'mtscout6/vim-cjsx'
-" coffeescript end
-" javascript end
+"Plugin 'mtscout6/vim-cjsx'
+"   coffeescript end
+" ruby end
 
-" slim
-Plugin 'slim-template/vim-slim'
+" 代码风格检查
+Plugin 'scrooloose/syntastic'
 
-" wechat
-Plugin 'chemzqm/wxapp.vim'
+" 自动补全
+"Plugin 'valloric/youcompleteme'
+
+" 修复macos输入法BUG?
+Plugin 'chenhouwu/vim-macos-ime'
+
+" 重构
+Plugin 'terryma/vim-multiple-cursors'
 
 filetype plugin indent on     " required! 
 syntax enable
@@ -208,9 +252,6 @@ set ai
 
 " Smart indet
 set si
-"tab自动填充
-set wildmode=list:longest,list:full
-set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*
 " 带有如下符号的单词不要被换行分割
 set iskeyword+=_,$,@,%,#,-
 
@@ -264,6 +305,12 @@ let g:vimrc_author='Killua DestinyD'
 let g:vimrc_email='destinyd.war@gmail.com' 
 let g:vimrc_homepage='' 
 
+" javascript
+let javascript_enable_domhtmlcss = 1
+"let g:syntastic_javsacript_checkers = ['eslint']
+let g:syntastic_javascript_checkers = ['eslint', 'jsxhint']
+"let g:syntastic_javascript_jsxhint_exec = 'jsx-jshint-wrapper'
+
 "状态栏
 set statusline=%<%f\ %m%=\ %h%r\ %-19([%p%%]\ %3l,%02c%03V%)%y
 highlight StatusLine term=bold,reverse cterm=bold,reverse
@@ -281,7 +328,8 @@ map <S-Tab> :bp<CR>
 
 "map <F2> :FufFile<CR>
 "map <F3> :FufBuffer<CR>
-map <F4> :TlistOpen<CR>
+"map <F4> :TlistOpen<CR>
+map <F5> :TlistOpen<CR>
 "map <F5> :NERDTreeToggle<CR>
 nmap <F6> :AuthorInfoDetect<cr> 
 "简单换窗
@@ -305,9 +353,9 @@ map <C-N> :FufCoverageFile<CR>
 map <A-N> :FufBuffer<CR>
 imap <C-SPACE> <C-p>
 imap <C-A-SPACE> <C-x><C-]>
-map <C-s> :w<CR>
-imap <C-s> :w<CR>
-nmap <C-s> :w<CR>
+"map <C-s> :w<CR>
+"imap <C-s> :w<CR>
+"nmap <C-s> :w<CR>
 map <C-A-s> :wall<CR>
 " 我
 map <Leader>tn :tabnew<CR>
@@ -316,25 +364,35 @@ map <Leader>ss :w !sudo tee % <CR>
 map <Leader>cpc :CoffeeCompile vert<CR><CR>
 
 "外部粘贴
-vmap <C-c> y:call system("xclip -i -selection clipboard", getreg("\""))<CR>:call system("xclip -i", getreg("\""))<CR>
-nmap <C-v> :call setreg("\"",system("xclip -o -selection clipboard"))<CR>p
+"vmap <C-c> y:call system("xclip -i -selection clipboard", getreg("\""))<CR>:call system("xclip -i", getreg("\""))<CR>
+"nmap <C-v> :call setreg("\"",system("xclip -o -selection clipboard"))<CR>p
 
 " ctrlp start
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
-set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+"set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 set wildignore+=*/log/*,*/public/assets/*,*/node_modules/*
 set wildignore+=_www/* " jekyll
 set wildignore+=dist/* " node
+set wildignore+=*/.git/*,*/.svn/*,*/.hg/* " node
 
 "let g:ctrlp_custom_ignore = '\v[\/](\.git|\.hg|\.svn)$'
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.git|\.hg|\.svn|dist|\_www)$',
-  \ 'file': '\.exe$\|\.so$\|\.dll|\.je?pg|\.png|\.gif$',
+  \ 'dir':  '\v[\/](\.git|\.hg|\.svn|dist|\_www|node_modules|doc|tmp)$',
+  \ 'file': '\v\.(exe|so|dll|je?pg|png|gif)$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
+
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+
+"let g:ctrlp_working_path_mode = 'ra'
+"\ 'link': 'some_bad_symbolic_links',
+"let g:ctrlp_custom_ignore = {
+  "\ 'dir':  '\v[\/](doc|tmp|node_modules)',
+  "\ 'file': '\v\.(exe|so|dll)$',
+  "\ }
 
 " ctrlp end
 
@@ -389,3 +447,30 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 "let g:Powerline_symbols = 'fancy'
 set t_Co=256
 " powerline end
+
+" UltiSnips 以及自动填充冲突修改
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+
+" YouCompleteMe 配置
+let g:ycm_semantic_triggers =  {
+  \   'c' : ['->', '.'],
+  \   'objc' : ['->', '.', 're!\[[_a-zA-Z]+\w*\s', 're!^\s*[^\W\d]\w*\s',
+  \             're!\[.*\]\s'],
+  \   'ocaml' : ['.', '#'],
+  \   'cpp,objcpp' : ['->', '.', '::'],
+  \   'perl' : ['->'],
+  \   'php' : ['->', '::'],
+  \   'cs,java,javascript,typescript,d,python,perl6,scala,vb,elixir,go' : ['.'],
+  \   'ruby' : ['.', '::'],
+  \   'lua' : ['.', ':'],
+  \   'erlang' : [':'],
+  \   'css': [ 're!^\s{4}', 're!:\s+'],
+  \   'html': [ '</' ],
+  \ }
