@@ -1,0 +1,59 @@
+snippet rcls
+	import React from 'react'
+	
+	class ${1:Class} extends React.Component {
+	  render() {
+	    return (
+	      <div>
+		${1}
+	      </div>
+	    )
+	  }
+	}
+
+# dom base
+snippet .
+	className="${1}"
+snippet #
+	id="${1}"
+snippet key
+	key={\`${1}\`}
+snippet ref
+	ref="${1}"
+# dom
+snippet div
+	<div>
+	  ${1}
+	</div>
+snippet divw
+	<div>${1}</div>
+snippet div.
+	<div className="${2}">
+	  ${1}
+	</div>
+snippet img
+	<img src="${1}" />
+snippet img.
+	<img src="${1}" className="${2}" />
+snippet inp
+	<input type="${1:text}" value="${2}" />
+snippet table
+	<table>
+	  <tbody>
+	    <tr>
+	      <td>${1}</td>
+	      <td>${2}</td>
+	      <td>${3}</td>
+	    </tr>
+	  </tbody>
+	</table>
+snippet table.
+	<table className="${4}">
+	  <tbody className="${5}">
+	    <tr className="${6}">
+	      <td>${1}</td>
+	      <td>${2}</td>
+	      <td>${3}</td>
+	    </tr>
+	  </tbody>
+	</table>
