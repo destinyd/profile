@@ -1,0 +1,105 @@
+#!/usr/bin/env ruby
+
+class String
+  BLANK_RE = /\A[[:space:]]*\z/
+
+  # A string is blank if it's empty or contains whitespaces only:
+  #
+  #   ''.blank?       # => true
+  #   '   '.blank?    # => true
+  #   "\t\n\r".blank? # => true
+  #   ' blah '.blank? # => false
+  #
+  # Unicode whitespace is supported:
+  #
+  #   "\u00a0".blank? # => true
+  #
+  def blank?
+    # The regexp that matches blank strings is expensive. For the case of empty
+    # strings we can speed up this method (~3.5x) with an empty? call. The
+    # penalty for the rest of strings is marginal.
+    empty? || (self =~ BLANK_RE)
+  end
+end
+
+REGX_AV = /av(\d+)/
+
+type = ''
+scope = ''
+
+case ARGV[0]
+when 'f', 'feat'
+  type = 'feat'
+when 'fi', 'fix'
+  type = 'fix'
+when 'd', 'doc', 'docs'
+  type = 'docs'
+when 's', 'st', 'style'
+  type = 'style'
+when 'r', 're', 'ref', 'refactor'
+  type = 'refactor'
+when 't', 'te', 'test'
+  type = 'test'
+when 'c', 'ch', 'chore'
+  type = 'chore'
+else
+  type = ARGV[0]
+end
+
+case ARGV[1]
+when REGX_AV
+  scope = "api,v" + REGX_AV.match(ARGV[1])[1]
+when 'a', 'api'
+  scope = 'api'
+when 'b', 'base'
+  scope = 'base'
+when 'c'
+  scope = 'concerns'
+when 'com'
+  scope = 'components'
+when 'd', 'dao'
+  scope = 'dao'
+when 'f'
+  scope = 'factories'
+when 'g', 'gradle'
+  scope = 'gradle'
+when 'gem', 'gems'
+  scope = 'gems'
+when 'h', 'he', 'helpers'
+  scope = 'helpers'
+when 'l', 'lib'
+  scope = 'lib'
+when 'm'
+  scope = 'models'
+when 'mm'
+  scope = 'models,migration'
+when 'mi', 'mig', 'migration'
+  scope = 'migration'
+when 'mc'
+  scope = 'models,concerns'
+when 'mo', 'mock', 'mockup'
+  scope = 'mockup'
+when 'r', 'ro', 'route', 'routes'
+  scope = 'routes'
+when 'rake', 'rakes'
+  scope = 'rakes'
+when 's', 'spec'
+  scope = 'spec'
+when 'se', 'seed', 'seeds'
+  scope = 'seeds'
+when 'support'
+  scope = 'support'
+when 't', 'test'
+  scope = 'test'
+when 'u', 'util', 'utils'
+  scope = 'utils'
+when 'v'
+  scope = 'views'
+else
+  scope = ARGV[1]
+end
+
+str_scope = scope.blank? ? '' : "(#{scope})"
+s = "git commit -m '#{type}#{str_scope}: #{ARGV[2]}' #{ARGV[3..-1].join(' ')}"
+p s
+exec s

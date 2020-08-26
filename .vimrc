@@ -10,6 +10,9 @@ let $Lang="zh_CN.UTF-8"
 let g:snips_author = "DestinyD"
 filetype off                   " required!
 
+" 支持代码折叠, zf zc zr
+set foldenable
+
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#rc()
 
@@ -17,109 +20,221 @@ call vundle#rc()
 " required! 
 Plugin 'VundleVim/vundle.vim'
 
-"系统类的
-"文件操作, 可能要注意安全
-Plugin 'tpope/vim-eunuch'
-
-"html to text
-" 基本没用上
-"Plugin 'tpope/vim-markdown'
-"markdown preview
-"Plugin 'greyblake/vim-preview'
-"访问
-":nmap <Leader>\ :Preview<CR>
-
-" My Bundles here:
-"
-" original repos on github
-" Gcommit...  git
-Plugin 'tpope/vim-fugitive'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" be bs bv buffer理打开过去文件
-Plugin 'bufexplorer.zip' 
-" vim-scripts repos
-Plugin 'L9'
+" 快速移动到目标位置
 "Plugin 'FuzzyFinder'
-"Plugin 'tpope/vim-cucumber'
-Plugin 'tpope/vim-rails'
-"Plugin 'taq/vim-rspec'
-" non github repos
-" Plugin 'git://git.wincent.com/command-t.git'
-" 自己设的,ct h和ctrlp同类
-"Plugin 'wincent/Command-T'
-" 快速查找文件,如commentT
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'lokikl/vim-ctrlp-ag'
-" snipMate 
-"Plugin 'vim-scripts/snipMate'
+Plugin 'easymotion/vim-easymotion'
+"NeoBundle 'haya14busa/incsearch.vim'
+Plugin 'haya14busa/incsearch.vim'
+"Plug 'haya14busa/incsearch.vim'
+"NeoBundle 'haya14busa/incsearch-easymotion.vim'
+Plugin 'haya14busa/incsearch-easymotion.vim'
+"Plug 'haya14busa/incsearch-easymotion.vim'
+"NeoBundle 'haya14busa/incsearch-fuzzy.vim'
+Plugin 'haya14busa/incsearch-fuzzy.vim'
+"Plug 'haya14busa/incsearch-fuzzy.vim'
 
-" 替代 snipmate
-"Plugin 'MarcWeber/vim-addon-mw-utils'
-"Plugin 'tomtom/tlib_vim'
-" 需要切换到tlib_fix分支
-"Plugin 'garbas/vim-snipmate'
+function! s:config_easyfuzzymotion(...) abort
+  return extend(copy({
+  \   'converters': [incsearch#config#fuzzy#converter()],
+  \   'modules': [incsearch#config#easymotion#module()],
+  \   'keymap': {"\<CR>": '<Over>(easymotion)'},
+  \   'is_expr': 0,
+  \   'is_stay': 1
+  \ }), get(a:, 1, {}))
+endfunction
+noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
+noremap <silent><expr> z/ incsearch#go(<SID>config_easyfuzzymotion())
 
-" 替代snipmate
+" 替代snipmate，搭配YouCompleteMe
+" 未测
 Plugin 'sirver/ultisnips'
+" UltiSnips 以及自动填充冲突修改
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-n>"
+let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 
-" Optional:
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+"" Optional:
+" 未测
 Plugin 'honza/vim-snippets'
 
 " 自动填充
+" 未测
 Plugin 'Valloric/YouCompleteMe'
+" YouCompleteMe 配置
+" let g:ycm_path_to_python_interpreter="/usr/local/bin/python2"
+let g:ycm_semantic_triggers =  {
+  \   'c' : ['->', '.'],
+  \   'objc' : ['->', '.', 're!\[[_a-zA-Z]+\w*\s', 're!^\s*[^\W\d]\w*\s',
+  \             're!\[.*\]\s'],
+  \   'ocaml' : ['.', '#'],
+  \   'cpp,objcpp' : ['->', '.', '::'],
+  \   'perl' : ['->'],
+  \   'php' : ['->', '::'],
+  \   'cs,java,javascript,typescript,d,python,perl6,scala,vb,elixir,go' : ['.'],
+  \   'ruby' : ['.', '::'],
+  \   'lua' : ['.', ':'],
+  \   'erlang' : [':'],
+  \   'css': [ 're!^\s{4}', 're!:\s+'],
+  \   'html': [ '</' ],
+  \ }
+
+" 文字 start
+" v选中Y 输入符号:  给选中内容加符号
+" ds符号删除
+" cs符号符号:       符号替换
+" ys位移*n符号:     给位移选中内容加符号
+Plugin 'tpope/vim-surround'
+
+" c<space>,cc ,cu  注释
+Plugin 'scrooloose/nerdcommenter'
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+" 文字 end
+" 操作类 end
+
+"系统类的
+"文件操作, 可能要注意安全
+Plugin 'tpope/vim-eunuch'
+" 自动创建前置目录
+Plugin 'auto_mkdir'
+" f5 显示目录
+Plugin 'scrooloose/nerdtree'
+" be bs bv buffer理打开过去文件
+Plugin 'bufexplorer.zip' 
+" 快速查找文件
+" ctrlp start
+" ctrl+p
+Plugin 'ctrlpvim/ctrlp.vim'
+" ctrlp配置
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+"set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+set wildignore+=*/log/*,*/public/assets/*,*/node_modules/*
+set wildignore+=_www/* " jekyll
+set wildignore+=dist/* " node
+set wildignore+=*/.git/*,*/.svn/*,*/.hg/* " node
+
+"let g:ctrlp_custom_ignore = '\v[\/](\.git|\.hg|\.svn)$'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](\.git|\.hg|\.svn|dist|\_www|node_modules|doc|tmp)$',
+  \ 'file': '\v\.(exe|so|dll|je?pg|png|gif)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
+
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+
+"let g:ctrlp_working_path_mode = 'ra'
+"\ 'link': 'some_bad_symbolic_links',
+"let g:ctrlp_custom_ignore = {
+  "\ 'dir':  '\v[\/](doc|tmp|node_modules)',
+  "\ 'file': '\v\.(exe|so|dll)$',
+  "\ }
+" ctrlp end
+" ctrl+f 通过 ag 查找当前单词定义，并配合 fzf 快速打开
+
+Plugin 'lokikl/vim-ctrlp-ag'
+"nnoremap <c-f> :CtrlPag<cr>
+"vnoremap <c-f> :CtrlPagVisual<cr>
+nnoremap <C-g> :CtrlPag<cr>
+vnoremap <C-g> :CtrlPagVisual<cr>
+nnoremap <Leader>cg :CtrlPagLocate
+nnoremap <Leader>cp :CtrlPagPrevious<cr>
+let g:ctrlp_ag_ignores = '--ignore .git
+    \ --ignore "deps/*"
+    \ --ignore "_build/*"
+    \ --ignore "node_modules/*"'
+
+"Plugin 'Chun-Yang/vim-action-ag'
+" ctrl + shift + f 全文搜索
+"Plugin 'dyng/ctrlsf.vim'
+"nmap     <D-S-F>f <Plug>CtrlSFPrompt
+"vmap     <D-S-F>f <Plug>CtrlSFVwordPath
+"vmap     <D-S-F>F <Plug>CtrlSFVwordExec
+"nmap     <D-S-F>n <Plug>CtrlSFCwordPath
+"nmap     <D-S-F>p <Plug>CtrlSFPwordPath
+"nnoremap <D-S-F>o :CtrlSFOpen<CR>
+"nnoremap <D-S-F>t :CtrlSFToggle<CR>
+"inoremap <D-S-F>t <Esc>:CtrlSFToggle<CR>
+" 全文检索 Cmd+Shift+f
+Plugin 'wincent/ferret'
+nmap     <D-F> :Ack<Space>
+
+" 项目
+" git
+Plugin 'tpope/vim-fugitive'
+
+" 开发
+"   通用
+"     结束def end填充
+Plugin 'tpope/vim-endwise' 
+
+"---后端---start---
+" ruby start
+"Plugin 'tpope/vim-cucumber'
+" guard 代替, 没有必要
+"Plugin 'thoughtbot/vim-rspec'
+
+" rails start
+Plugin 'tpope/vim-rails'
+" rails end
+" ruby end
+
+" rust start
+Plugin 'rust-lang/rust.vim'
+let g:rust_clip_command = 'pbcopy'
+" rust end
+"---后端---end---
+
+"---前端---start
+"   html start
+"     % 可以跳html标签
+Plugin 'matchit.zip'
+
+" 多行多层级加 html 标签--没必要
+"Plugin 'mattn/emmet-vim'
+"   html end
+
+"   类 html 标记 start
+Plugin 'slim-template/vim-slim'
+autocmd BufNewFile,BufRead *.slim set ft=slim
+"   类 html 标记 end
+
+"   scss start
+"Plugin 'shmargum/vim-sass-colors' " FIXME 卡卡卡卡卡 ?
+"   scss end
+"---前端---end
+
+" 还在用？？？
+"Plugin 'taglist.vim'
+"Plugin 'Align'
+
+" 改为 F6
+" AuthorInfoDetect 失败
+" 不希望让人晓得是我写的！！！
+"Plugin 'AuthorInfo'
+
 
 " ...
-" other need 自动弹出菜单？ 太老, 补充导致BUG
-"Plugin 'AutoComplPop'
-" Plugin 'NeoComplCache'
 " 剪贴板
 " Plugin 'fakeclip'
-"cs cst ds 两旁添加符号
-Plugin 'tpope/vim-surround'
-" DirBrowser
-"Plugin 'scrooloose/nerdtree'
-"Plugin 'FindInNERDTree'
-" Plugin 'The-NERD-Commenter'
-Plugin 'taglist.vim'
 " Plugin 'nelson/cscope_maps'
-" svn git等 通用命令
-" Plugin 'vcscommand.vim'
 "Plugin 'vim-scripts/qiushibaike'
 " js 缩进？太老
 "Plugin 'jsbeautify'
 "Plugin 'xml.vim'
-Plugin 'auto_mkdir'
 " 自动缩进排序什么的 (=?) 不太懂具体设置
-Plugin 'Align'
-" % 可以跳html标签
-Plugin 'matchit.zip' 
 " Jade语法的编写HTML div>p#foo$*3>a  <c-y>
-" <div>
-  " <p id="foo1">
-        "<a href=""></a>
-    "</p>
-    "<p id="foo2">
-        "<a href=""></a>
-    "</p>
-    "<p id="foo3">
-        "<a href=""></a>
-    "</p>
-"</div>
-Plugin 'mattn/emmet-vim'
 
-" 改为 F6
-Plugin 'AuthorInfo'
-" ,cc ,cu ,c<space> 注释
-Plugin 'scrooloose/nerdcommenter'
 "命令行 ConqueTeam
 "Plugin 'rson/vim-conque' 
 "tab 完成
 " Plugin 'ervandew/supertab' 
-" c-w o 全屏  自己,,
-Plugin 'vim-scripts/ZoomWin' 
-" 结束def end填充
-Plugin 'tpope/vim-endwise' 
 " 检查错误
 "Plugin 'scrooloose/syntastic'
 " 重构工具
@@ -190,6 +305,7 @@ Plugin 'vim-ruby/vim-ruby'
 " cjsx
 "Plugin 'mtscout6/vim-cjsx'
 "   coffeescript end
+Plugin 'ngmy/vim-rubocop'
 " ruby end
 
 " 代码风格检查
@@ -198,10 +314,11 @@ Plugin 'scrooloose/syntastic'
 " 自动补全
 "Plugin 'valloric/youcompleteme'
 
-" 修复macos输入法BUG?
-Plugin 'chenhouwu/vim-macos-ime'
+" 修复macos输入法BUG? 不见了
+"Plugin 'chenhouwu/vim-macos-ime'
 
 " 重构
+"   批量选择
 Plugin 'terryma/vim-multiple-cursors'
 
 filetype plugin indent on     " required! 
@@ -328,9 +445,9 @@ map <S-Tab> :bp<CR>
 
 "map <F2> :FufFile<CR>
 "map <F3> :FufBuffer<CR>
-"map <F4> :TlistOpen<CR>
-map <F5> :TlistOpen<CR>
-"map <F5> :NERDTreeToggle<CR>
+map <F4> :TlistOpen<CR>
+"map <F5> :TlistOpen<CR>
+map <F5> :NERDTreeToggle<CR>
 nmap <F6> :AuthorInfoDetect<cr> 
 "简单换窗
 map <C-j> <C-W>j
@@ -338,7 +455,6 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
-map <Leader><Leader> :ZoomWin<CR>
 map <C-\> :tnext<CR>
 
 map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
@@ -349,8 +465,8 @@ nmap <C-Down> ]e
 " Bubble multiple lines
 vmap <C-Up> [egv
 vmap <C-Down> ]egv
-map <C-N> :FufCoverageFile<CR>
-map <A-N> :FufBuffer<CR>
+"map <C-N> :FufCoverageFile<CR>
+"map <A-N> :FufBuffer<CR>
 imap <C-SPACE> <C-p>
 imap <C-A-SPACE> <C-x><C-]>
 "map <C-s> :w<CR>
@@ -367,34 +483,6 @@ map <Leader>cpc :CoffeeCompile vert<CR><CR>
 "vmap <C-c> y:call system("xclip -i -selection clipboard", getreg("\""))<CR>:call system("xclip -i", getreg("\""))<CR>
 "nmap <C-v> :call setreg("\"",system("xclip -o -selection clipboard"))<CR>p
 
-" ctrlp start
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
-"set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
-set wildignore+=*/log/*,*/public/assets/*,*/node_modules/*
-set wildignore+=_www/* " jekyll
-set wildignore+=dist/* " node
-set wildignore+=*/.git/*,*/.svn/*,*/.hg/* " node
-
-"let g:ctrlp_custom_ignore = '\v[\/](\.git|\.hg|\.svn)$'
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.git|\.hg|\.svn|dist|\_www|node_modules|doc|tmp)$',
-  \ 'file': '\v\.(exe|so|dll|je?pg|png|gif)$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
-
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
-
-"let g:ctrlp_working_path_mode = 'ra'
-"\ 'link': 'some_bad_symbolic_links',
-"let g:ctrlp_custom_ignore = {
-  "\ 'dir':  '\v[\/](doc|tmp|node_modules)',
-  "\ 'file': '\v\.(exe|so|dll)$',
-  "\ }
-
-" ctrlp end
 
 "##### auto fcitx  ###########
 let g:input_toggle = 1
@@ -421,56 +509,9 @@ autocmd InsertLeave * call Fcitx2en()
 autocmd InsertEnter * call Fcitx2zh()
 "##### auto fcitx end ######
 "
-" 修复slim识别错误BUG
-autocmd BufNewFile,BufRead *.slim set ft=slim
 
-" easymotion
-"
-" <Leader>f{char} to move to {char}
-map  <Leader>f <Plug>(easymotion-bd-f)
-nmap <Leader>f <Plug>(easymotion-overwin-f)
-
-" s{char}{char} to move to {char}{char}
-nmap s <Plug>(easymotion-overwin-f2)
-
-" Move to line
-map <Leader>L <Plug>(easymotion-bd-jk)
-nmap <Leader>L <Plug>(easymotion-overwin-line)
-
-" Move to word
-map  <Leader>w <Plug>(easymotion-bd-w)
-nmap <Leader>w <Plug>(easymotion-overwin-w)
-"
-" easymotion end
 
 " powerline start
 "let g:Powerline_symbols = 'fancy'
 set t_Co=256
 " powerline end
-
-" UltiSnips 以及自动填充冲突修改
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
-
-
-" YouCompleteMe 配置
-let g:ycm_semantic_triggers =  {
-  \   'c' : ['->', '.'],
-  \   'objc' : ['->', '.', 're!\[[_a-zA-Z]+\w*\s', 're!^\s*[^\W\d]\w*\s',
-  \             're!\[.*\]\s'],
-  \   'ocaml' : ['.', '#'],
-  \   'cpp,objcpp' : ['->', '.', '::'],
-  \   'perl' : ['->'],
-  \   'php' : ['->', '::'],
-  \   'cs,java,javascript,typescript,d,python,perl6,scala,vb,elixir,go' : ['.'],
-  \   'ruby' : ['.', '::'],
-  \   'lua' : ['.', ':'],
-  \   'erlang' : [':'],
-  \   'css': [ 're!^\s{4}', 're!:\s+'],
-  \   'html': [ '</' ],
-  \ }

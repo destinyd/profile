@@ -1,8 +1,10 @@
 snippet oas
 	Object.assign({},
 	  ${1:foo}
-	)
+	);
 snippet log
-	console.log(${1:foo})
+	console.log(${1:foo});
+snippet logg
+	console.log('${2:$1}:', ${1:foo});
 snippet warn
-	console.warn(${1:foo})
+	console.warn(${1:foo});
